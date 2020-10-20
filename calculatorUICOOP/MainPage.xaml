@@ -11,10 +11,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="180"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -41,13 +41,14 @@
         <Button BackgroundColor="Gray"  Text="0" Grid.Row="5" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
         <Button BackgroundColor="Gray"  Text="=" Grid.Row="5" Grid.Column="2" FontSize="40" TextColor="White"></Button>
 
-        <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" Padding="10">
+        <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="10">
             <Button  Text="DEL" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  Text="/" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  Text="/"  CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
             <Button  Text="x" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
             <Button  Text="+" CornerRadius="10" BackgroundColor="DimGray" TextColor="White" ></Button>
             <Button  Text="-" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
             <Button  Text="%" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  Text="CE" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
         </StackLayout>
     </Grid>
     
