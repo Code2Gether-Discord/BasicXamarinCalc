@@ -15,15 +15,12 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="80"/>
-            <RowDefinition Height="80"/>
-
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-         
 
         </Grid.ColumnDefinitions>
         <Label BackgroundColor="Magenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0" Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20"></Label>
@@ -42,9 +39,7 @@
 
         <Button BackgroundColor="Gray"  Text="." Grid.Row="5" Grid.Column="0" FontSize="40" TextColor="White">  </Button>
         <Button BackgroundColor="Gray"  Text="0" Grid.Row="5" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
-        <Button BackgroundColor="Gray"  Text="=" Grid.Row="5" Grid.Column="2" FontSize="40" TextColor="White">  </Button>
-
-
+        <Button BackgroundColor="Gray"  Text="=" Grid.Row="5" Grid.Column="2" FontSize="40" TextColor="White"></Button>
 
         <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" Padding="10">
             <Button  Text="DEL" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
