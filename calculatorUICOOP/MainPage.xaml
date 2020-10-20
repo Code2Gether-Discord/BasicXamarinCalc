@@ -42,13 +42,13 @@
 
 
 
-        <StackLayout Grid.Column="3" Grid.Row="2" Padding="20" >
-            <Button  Text="DEL" CornerRadius="10"></Button>
-            <Button  Text="/" CornerRadius="10"></Button>
-            <Button  Text="x" CornerRadius="10"></Button>
-            <Button  Text="+" CornerRadius="10" ></Button>
-            <Button  Text="-" CornerRadius="10"></Button>
-            <Button  Text="%" CornerRadius="10"></Button>
+        <StackLayout Grid.Column="3" Grid.Row="2" Padding="10">
+            <Button  Text="DEL" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  Text="/" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  Text="x" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  Text="+" CornerRadius="10" BackgroundColor="DimGray" TextColor="White" ></Button>
+            <Button  Text="-" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  Text="%" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
         </StackLayout>
     </Grid>
     
