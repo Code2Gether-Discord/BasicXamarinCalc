@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="calculatorUICOOP.MainPage">
+    
+   
+    <Grid BackgroundColor="gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            
+            
+          
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+           
+
+        </Grid.ColumnDefinitions>
+        <Label BackgroundColor="Magenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0" Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20"></Label>
+        <Label BackgroundColor="LightYellow" Text="0" Grid.Row="1" Grid.ColumnSpan="4" HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50"></Label>
+        <Button BackgroundColor="Gray"  Text="7" Grid.Row="2" Grid.Column="0" FontSize="30" TextColor="White">  </Button>
+        <Button BackgroundColor="Gray" Text="8" Grid.Row="2" Grid.Column="1" FontSize="30" TextColor="White">  </Button>
+        <Button BackgroundColor="Gray"   Text="9" Grid.Row="2" Grid.Column="2" FontSize="30" TextColor="White">  </Button>
+
+        <Button BackgroundColor="Gray"   Text="4" Grid.Row="3" Grid.Column="0" FontSize="30" TextColor="White"></Button>
+        <Button BackgroundColor="Gray"  Text="5" Grid.Row="3" Grid.Column="1" FontSize="30" TextColor="White"></Button>
+        <Button BackgroundColor="Gray"  Text="6" Grid.Row="3" Grid.Column="2" FontSize="30" TextColor="White">  </Button>
+
+        <Button BackgroundColor="Gray"  Text="." Grid.Row="4" Grid.Column="0" FontSize="30" TextColor="White">  </Button>
+        <Button BackgroundColor="Gray"  Text="0" Grid.Row="4" Grid.Column="1" FontSize="30" TextColor="White">  </Button>
+        <Button BackgroundColor="Gray"  Text="=" Grid.Row="4" Grid.Column="2" FontSize="30" TextColor="White">  </Button>
+
+
+
+        <StackLayout Grid.Column="3" Grid.Row="2" Padding="20" >
+            <Button  Text="DEL" CornerRadius="10"></Button>
+            <Button  Text="/" CornerRadius="10"></Button>
+            <Button  Text="x" CornerRadius="10"></Button>
+            <Button  Text="+" CornerRadius="10" ></Button>
+            <Button  Text="-" CornerRadius="10"></Button>
+            <Button  Text="%" CornerRadius="10"></Button>
+        </StackLayout>
+    </Grid>
+    
+    
+</ContentPage>
