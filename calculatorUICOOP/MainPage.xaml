@@ -25,30 +25,30 @@
         </Grid.ColumnDefinitions>
         <Label BackgroundColor="Magenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0" Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20"></Label>
         <Label BackgroundColor="LightYellow" Text="0" Grid.Row="1" Grid.ColumnSpan="4" HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50"></Label>
-        <Button BackgroundColor="Gray"  Text="7" Grid.Row="2" Grid.Column="0" FontSize="40" TextColor="White">  </Button>
-        <Button BackgroundColor="Gray" Text="8" Grid.Row="2" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
-        <Button BackgroundColor="Gray"   Text="9" Grid.Row="2" Grid.Column="2" FontSize="40" TextColor="White">  </Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="7" Grid.Row="2" Grid.Column="0" FontSize="40" TextColor="White">  </Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray" Text="8" Grid.Row="2" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"   Text="9" Grid.Row="2" Grid.Column="2" FontSize="40" TextColor="White">  </Button>
 
-        <Button BackgroundColor="Gray"   Text="4" Grid.Row="3" Grid.Column="0" FontSize="40" TextColor="White"></Button>
-        <Button BackgroundColor="Gray"  Text="5" Grid.Row="3" Grid.Column="1" FontSize="40" TextColor="White"></Button>
-        <Button BackgroundColor="Gray"  Text="6" Grid.Row="3" Grid.Column="2" FontSize="40" TextColor="White">  </Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"   Text="4" Grid.Row="3" Grid.Column="0" FontSize="40" TextColor="White"></Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="5" Grid.Row="3" Grid.Column="1" FontSize="40" TextColor="White"></Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="6" Grid.Row="3" Grid.Column="2" FontSize="40" TextColor="White">  </Button>
 
-        <Button BackgroundColor="Gray"   Text="1" Grid.Row="4" Grid.Column="0" FontSize="40" TextColor="White"></Button>
-        <Button BackgroundColor="Gray"  Text="2" Grid.Row="4" Grid.Column="1" FontSize="40" TextColor="White"></Button>
-        <Button BackgroundColor="Gray"  Text="3" Grid.Row="4" Grid.Column="2" FontSize="40" TextColor="White"></Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"   Text="1" Grid.Row="4" Grid.Column="0" FontSize="40" TextColor="White"></Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="2" Grid.Row="4" Grid.Column="1" FontSize="40" TextColor="White"></Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="3" Grid.Row="4" Grid.Column="2" FontSize="40" TextColor="White"></Button>
 
-        <Button BackgroundColor="Gray"  Text="." Grid.Row="5" Grid.Column="0" FontSize="40" TextColor="White">  </Button>
-        <Button BackgroundColor="Gray"  Text="0" Grid.Row="5" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
-        <Button BackgroundColor="Gray"  Text="=" Grid.Row="5" Grid.Column="2" FontSize="40" TextColor="White"></Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="." Grid.Row="5" Grid.Column="0" FontSize="40" TextColor="White">  </Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="0" Grid.Row="5" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
+        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="=" Grid.Row="5" Grid.Column="2" FontSize="40" TextColor="White"></Button>
 
-        <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="10">
-            <Button  Text="DEL" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  Text="/"  CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  Text="x" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  Text="+" CornerRadius="10" BackgroundColor="DimGray" TextColor="White" ></Button>
-            <Button  Text="-" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  Text="%" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  Text="CE" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+        <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
+            <Button  FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  FontSize="15" Text="/"  CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  FontSize="15" Text="x" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button FontSize="15" Text="+" CornerRadius="10" BackgroundColor="DimGray" TextColor="White" ></Button>
+            <Button  FontSize="15" Text="-" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  FontSize="15" Text="%" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button  FontSize="15" Text="CE" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
         </StackLayout>
     </Grid>
     
