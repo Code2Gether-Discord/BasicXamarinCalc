@@ -6,6 +6,21 @@
              mc:Ignorable="d"
              x:Class="calculatorUICOOP.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="numButton">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="BackgroundColor" Value="Gray" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            
+            <Style TargetType="Button" x:Key="opButton">
+                <Setter Property="BackgroundColor" Value="DimGray" />
+                <Setter Property="CornerRadius" Value="10" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

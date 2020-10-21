@@ -5,9 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="calculatorUICOOP.MainPage">
+
     
-   
-    <Grid BackgroundColor="gray">
+            <Grid BackgroundColor="gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
             <RowDefinition Height="180"/>
@@ -23,32 +23,36 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
-        <Label BackgroundColor="Magenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0" Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20"></Label>
+        <Label  
+            BackgroundColor="DimGray" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0"
+            Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20">
+        </Label>
         <Label BackgroundColor="LightYellow" Text="0" Grid.Row="1" Grid.ColumnSpan="4" HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50"></Label>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="7" Grid.Row="2" Grid.Column="0" FontSize="40" TextColor="White">  </Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray" Text="8" Grid.Row="2" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"   Text="9" Grid.Row="2" Grid.Column="2" FontSize="40" TextColor="White">  </Button>
+                
+        <Button Style="{StaticResource numButton}" Text="7" Grid.Row="2" Grid.Column="0"></Button>
+        <Button Style="{StaticResource numButton}" Text="8" Grid.Row="2" Grid.Column="1"></Button>
+        <Button Style="{StaticResource numButton}" Text="9" Grid.Row="2" Grid.Column="2"></Button>
 
-        <Button FontAttributes="Bold" BackgroundColor="Gray"   Text="4" Grid.Row="3" Grid.Column="0" FontSize="40" TextColor="White"></Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="5" Grid.Row="3" Grid.Column="1" FontSize="40" TextColor="White"></Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="6" Grid.Row="3" Grid.Column="2" FontSize="40" TextColor="White">  </Button>
+        <Button Style="{StaticResource numButton}" Text="4" Grid.Row="3" Grid.Column="0"></Button>
+        <Button Style="{StaticResource numButton}" Text="5" Grid.Row="3" Grid.Column="1"></Button>
+        <Button Style="{StaticResource numButton}" Text="6" Grid.Row="3" Grid.Column="2"></Button>
 
-        <Button FontAttributes="Bold" BackgroundColor="Gray"   Text="1" Grid.Row="4" Grid.Column="0" FontSize="40" TextColor="White"></Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="2" Grid.Row="4" Grid.Column="1" FontSize="40" TextColor="White"></Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="3" Grid.Row="4" Grid.Column="2" FontSize="40" TextColor="White"></Button>
+        <Button Style="{StaticResource numButton}" Text="1" Grid.Row="4" Grid.Column="0"></Button>
+        <Button Style="{StaticResource numButton}" Text="2" Grid.Row="4" Grid.Column="1"></Button>
+        <Button Style="{StaticResource numButton}" Text="3" Grid.Row="4" Grid.Column="2"></Button>
 
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="." Grid.Row="5" Grid.Column="0" FontSize="40" TextColor="White">  </Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="0" Grid.Row="5" Grid.Column="1" FontSize="40" TextColor="White">  </Button>
-        <Button FontAttributes="Bold" BackgroundColor="Gray"  Text="=" Grid.Row="5" Grid.Column="2" FontSize="40" TextColor="White"></Button>
+        <Button Style="{StaticResource numButton}" Text="." Grid.Row="5" Grid.Column="0"></Button>
+        <Button Style="{StaticResource numButton}" Text="0" Grid.Row="5" Grid.Column="1"></Button>
+        <Button Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
 
         <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
             <Button  FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  FontSize="15" Text="/"  CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  FontSize="15" Text="x" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button FontSize="15" Text="+" CornerRadius="10" BackgroundColor="DimGray" TextColor="White" ></Button>
-            <Button  FontSize="15" Text="-" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  FontSize="15" Text="%" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button  FontSize="15" Text="CE" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button Style="{StaticResource opButton}" Text="/"></Button>
+            <Button Style="{StaticResource opButton}" Text="x"></Button>
+            <Button Style="{StaticResource opButton}" Text="+"></Button>
+            <Button Style="{StaticResource opButton}" Text="-"></Button>
+            <Button Style="{StaticResource opButton}" Text="%"></Button>
+            <Button Style="{StaticResource opButton}" Text="CE"></Button>
         </StackLayout>
     </Grid>
     
