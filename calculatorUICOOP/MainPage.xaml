@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="calculatorUICOOP.MainPage">
         
-                          <!--StaticResource styles numButton and opButton is in App.xaml h    -->
+                          <!--StaticResource styles numButton and opButton is in App.xaml h    -->  
+                          <!-- what's up, this is my change-->
 
     <Grid BackgroundColor="gray">
         <Grid.RowDefinitions>
