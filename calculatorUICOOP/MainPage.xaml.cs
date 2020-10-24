@@ -19,17 +19,13 @@ namespace calculatorUICOOP
 
 
 
-
-
-
         }
-
-
-
-        private static void button0_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
-
-
+            //storing the pressed button object 
+            var button = (Button)sender;
+           
+           
         }
     }
 }
