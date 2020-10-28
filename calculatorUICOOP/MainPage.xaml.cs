@@ -1,7 +1,9 @@
-﻿using calculatorUICOOP.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Net.Http;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace calculatorUICOOP
@@ -11,36 +13,19 @@ namespace calculatorUICOOP
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
-        Display button;
-        string displayContent;
         public MainPage()
         {
             InitializeComponent();
-            //TO DO: Default label value should be zero so need 2 remove zero when displaying value/calculating
-            //you are currently not able to press 0
-        }
 
+
+
+        }
         private void Button_Clicked(object sender, EventArgs e)
         {
-            //create the button pressed
-            button = new Display((Button)sender);
-            DisplayRefresh();
+            //storing the pressed button object 
+            var button = (Button)sender;
+           
+           
         }
-
-        private void DisplayRefresh()
-        {
-            //add whatever is in the displaycontent and display it
-            DisplayLabel.Text += button.GetDisplayContent;
-        }
-        private void Button_Clear_Display(object sender, EventArgs e)
-        {
-            //if the button has been created
-            if (button != null)
-            {
-                button.ClearDisplay();
-                DisplayLabel.Text = "";
-            }
-        }
-
     }
 }
