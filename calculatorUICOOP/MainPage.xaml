@@ -29,7 +29,7 @@
             BackgroundColor="DarkMagenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0"
             Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20">
         </Label>
-        <Label  BackgroundColor="LightYellow" Text="0" Grid.Row="1" Grid.ColumnSpan="4" 
+        <Label x:Name="DisplayLabel" BackgroundColor="LightYellow" Grid.Row="1" Grid.ColumnSpan="4" 
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
 
@@ -56,7 +56,7 @@
             <Button Style="{StaticResource opButton}" Text="+"></Button>
             <Button Style="{StaticResource opButton}" Text="-"></Button>
             <Button Style="{StaticResource opButton}" Text="%"></Button>
-            <Button Style="{StaticResource opButton}" Text="CE"></Button>
+            <Button Clicked="Button_Clear_Display" Style="{StaticResource opButton}" Text="CE"></Button>
         </StackLayout>
     </Grid>
 </ContentPage>
