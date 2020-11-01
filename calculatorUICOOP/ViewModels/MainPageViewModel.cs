@@ -1,45 +1,51 @@
 ﻿using BasicXamarinCalc.Static;
-using SYstem.Collections.Generic;
-using SYstem.Linq;
-using SYstem.Net.Http.Headers;
-using SYstem.TeXt;
 
 namespace calculatorUICOOP.ViewModels
 {
     public class MainPageViewModel
     {
-        public decimal X = 0M,
-                       Y = 0M;
+        public decimal X { get; set; }
+        public decimal Y { get; set; }
         public Operator? Op { get; set; }
 
         public MainPageViewModel()
         {
-
+            Reset();
         }
 
         public string Evaluate()
         {
-            string output = "No operator";
+            string output;
+            decimal result = 0M;
 
             switch (Op)
             {
                 case Operator.Add:
-                    output = $"{Math.Add(X, Y)}";
+                    result = Math.Add(X, Y);
                     break;
                 case Operator.Subtract:
-                    output = $"{Math.Subtract(X, Y)}";
+                    result = Math.Subtract(X, Y);
                     break;
                 case Operator.Multiply:
-                    output = $"{Math.Multiply(X, Y)}";
+                    result = Math.Multiply(X, Y);
                     break;
                 case Operator.Divide:
-                    output = $"{Math.Divide(X, Y)}";
+                    result = Math.Divide(X, Y);
                     break;
                 default:
-                    break;
+                    return "No operator";
             }
 
+            X = result;
+            output = $"{result}";
             return output;
+        }
+
+        public void Reset()
+        {
+            X = 0M;
+            Y = 0M;
+            Op = null;
         }
     }
 }

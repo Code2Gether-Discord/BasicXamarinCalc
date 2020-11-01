@@ -5,7 +5,8 @@
         Add,
         Subtract,
         Multiply,
-        Divide
+        Divide,
+        Percent
     }
 
     public static class Math
