@@ -48,8 +48,9 @@ namespace calculatorUICOOP
 
         /// <summary>
         /// Determine operator being used,
-        /// Reset label's text to 0,
-        /// Move on to second variable input
+        /// reset label's text to 0,
+        /// expression result set to expressions first variable for stacking back-to-back operations
+        /// move on to second variable input
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
