@@ -16,4 +16,4 @@ jobs:
     - name: Setup MSbuild
       uses: microsoft/setup-msbuild@v1
     - name: Build
-      run: MSBuild.exe /t:restore /p:Configuration Release
+      run: MSBuild.exe /t:restore /p:Configuration=Release
