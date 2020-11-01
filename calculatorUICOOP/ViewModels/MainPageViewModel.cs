@@ -1,51 +1,52 @@
 ﻿using BasicXamarinCalc.Static;
+using calculatorUICOOP.Models;
 
 namespace calculatorUICOOP.ViewModels
 {
     public class MainPageViewModel
     {
-        public decimal X { get; set; }
-        public decimal Y { get; set; }
-        public Operator? Op { get; set; }
+        public Expression exp;  // Mathmatical expression that contains the variables and operator
 
         public MainPageViewModel()
         {
             Reset();
         }
 
+        /// <summary>
+        /// Evaluate math expression based on defined operator
+        /// </summary>
+        /// <returns>String represenatation of expression's result</returns>
         public string Evaluate()
         {
-            string output;
-            decimal result = 0M;
+            string output;  // Text to populate Display Label with
+            decimal result; // Numberical result of math expression being evaluated
 
-            switch (Op)
+            switch (exp.Operator)
             {
                 case Operator.Add:
-                    result = Math.Add(X, Y);
+                    result = Math.Add(exp.X, exp.Y);
                     break;
                 case Operator.Subtract:
-                    result = Math.Subtract(X, Y);
+                    result = Math.Subtract(exp.X, exp.Y);
                     break;
                 case Operator.Multiply:
-                    result = Math.Multiply(X, Y);
+                    result = Math.Multiply(exp.X, exp.Y);
                     break;
                 case Operator.Divide:
-                    result = Math.Divide(X, Y);
+                    result = Math.Divide(exp.X, exp.Y);
                     break;
                 default:
                     return "No operator";
             }
 
-            X = result;
+            exp.X = result;
             output = $"{result}";
             return output;
         }
 
         public void Reset()
         {
-            X = 0M;
-            Y = 0M;
-            Op = null;
+            exp = new Expression();
         }
     }
 }

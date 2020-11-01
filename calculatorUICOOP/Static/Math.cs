@@ -1,14 +1,8 @@
 ﻿namespace BasicXamarinCalc.Static
 {
-    public enum Operator
-    {
-        Add,
-        Subtract,
-        Multiply,
-        Divide,
-        Percent
-    }
-
+    /// <summary>
+    /// Generic Math class that evaluates two variables
+    /// </summary>
     public static class Math
     {
         public static decimal Add(decimal x, decimal y) =>
