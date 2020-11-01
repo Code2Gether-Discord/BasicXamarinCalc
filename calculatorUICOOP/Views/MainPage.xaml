@@ -29,7 +29,7 @@
             BackgroundColor="DarkMagenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0"
             Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20">
         </Label>
-        <Label
+        <Label x:Name="DisplayLabel"
             BackgroundColor="LightYellow" Text="0" Grid.Row="1" Grid.ColumnSpan="4" 
             HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
@@ -48,7 +48,7 @@
 
         <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="." Grid.Row="5" Grid.Column="0"></Button>
         <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="0" Grid.Row="5" Grid.Column="1"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
+        <Button Clicked="Equals_Clicked" Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
 
         <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
             <Button Clicked="C_Clicked" FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>

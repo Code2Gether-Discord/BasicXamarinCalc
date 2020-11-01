@@ -20,10 +20,15 @@ namespace calculatorUICOOP
         public MainPage()
         {
             InitializeComponent();
-            _vm = new MainPageViewModel(ModelFactory.GetRepository());
+            _vm = ViewModelFactory.GetMainPageViewModel();
         }
 
         private void Number_Clicked(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+        }
+
+        private void Equals_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
         }
@@ -35,11 +40,13 @@ namespace calculatorUICOOP
         private void C_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
+            DisplayLabel.Text = "0";
         }
 
         private void CE_Clicked(object sender, EventArgs e)
         {
             var button = (Button)sender;
+            DisplayLabel.Text = "0";
         }
     }
 }
