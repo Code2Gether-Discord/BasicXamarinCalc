@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculatorUICOOP.Android", "calculatorUICOOP.Android\calculatorUICOOP.Android.csproj", "{349D703B-5F7C-499D-97F2-82C85D8F6735}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "calculatorUICOOP", "calculatorUICOOP\calculatorUICOOP.csproj", "{7FB3E8E8-1205-469B-95A0-B293A6616126}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculatorUICOOP", "calculatorUICOOP\calculatorUICOOP.csproj", "{7FB3E8E8-1205-469B-95A0-B293A6616126}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
