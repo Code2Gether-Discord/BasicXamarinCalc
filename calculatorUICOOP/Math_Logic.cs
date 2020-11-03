@@ -4,7 +4,7 @@ using System.Text;
 
 namespace calculatorUICOOP
 {
-    static class MathLogic
+    public static class MathLogic
     {
         /// <summary>
         /// Adds two numbers together.
