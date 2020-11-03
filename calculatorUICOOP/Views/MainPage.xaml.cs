@@ -1,4 +1,5 @@
-﻿using System;
+﻿using calculatorUICOOP.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,24 +9,27 @@ using Xamarin.Forms;
 
 namespace calculatorUICOOP
 {
-    // Learn more about making custom code visible in the Xamarin.Forms previewer
-    // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        #region Fields and Properties
+        MainPageViewModel vm { get; set; }
+        #endregion
+
+        #region Constructor
         public MainPage()
         {
             InitializeComponent();
-
-
-
+            vm = new MainPageViewModel();
         }
+        #endregion
+
+        #region Event Handlers
         private void Button_Clicked(object sender, EventArgs e)
         {
-            //storing the pressed button object 
             var button = (Button)sender;
-           
-           
+            // TODO
         }
+        #endregion
     }
 }
