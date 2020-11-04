@@ -52,5 +52,9 @@ namespace calculatorUICOOP
         {
 
         }
+        private void Decimal_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
