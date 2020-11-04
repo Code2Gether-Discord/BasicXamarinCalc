@@ -50,12 +50,12 @@
         <Button Clicked="Equals_Clicked" Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
 
         <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
-            <Button Clicked="Clear_Clicked" FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button Clicked="Operator_Clicked" Style="{StaticResource opButton}" Text="/"></Button>
-            <Button Clicked="Operator_Clicked" Style="{StaticResource opButton}" Text="x"></Button>
-            <Button Clicked="Operator_Clicked" Style="{StaticResource opButton}" Text="+"></Button>
-            <Button Clicked="Operator_Clicked" Style="{StaticResource opButton}" Text="-"></Button>
-            <Button Clicked="Percent_Clicked" Style="{StaticResource opButton}" Text="%"></Button>
+            <Button Clicked="Delete_Clicked" FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button Clicked="Divide_Clicked" Style="{StaticResource opButton}" Text="/"></Button>
+            <Button Clicked="Multiply_Clicked" Style="{StaticResource opButton}" Text="x"></Button>
+            <Button Clicked="Plus_Clicked"   Style="{StaticResource opButton}" Text="+"></Button>
+            <Button Clicked="Minus_Clicked" Style="{StaticResource opButton}" Text="-"></Button>
+            <Button Clicked="Remainder_Clicked" Style="{StaticResource opButton}" Text="%"></Button>
             <Button Clicked="Clear_Clicked" Style="{StaticResource opButton}" Text="CE"></Button>
         </StackLayout>
     </Grid>
