@@ -31,5 +31,26 @@ namespace calculatorUICOOP
             // TODO
         }
         #endregion
+
+        private void Number_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Percent_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Equals_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Operator_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Clear_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
