@@ -31,5 +31,46 @@ namespace calculatorUICOOP
             // TODO
         }
         #endregion
+
+        private void Number_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Equals_Clicked(object sender, EventArgs e)
+        {
+
+        }      
+        private void Clear_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Decimal_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Remainder_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Minus_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Plus_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Divide_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Multiply_Clicked(object sender, EventArgs e)
+        {
+
+        }
+        private void Delete_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
