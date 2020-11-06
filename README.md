@@ -15,7 +15,8 @@ The goal is to help beginner C# developers get familiar with a few technologies 
 
 1. Pull `master` branch
 2. Create a local branch based off of `master`
-3. Make code changes
-4. Commit to your local branch
-5. Push your branch to the GitHub project
-6. Ask or create a Pull Request to merge your branch with `master`!
+3. Assign an Issue to yourself
+4. Make code changes that implement the Issue
+5. Commit to your local branch
+6. Push your branch to the GitHub project
+7. Create a Pull Request to merge your branch with `master`!
