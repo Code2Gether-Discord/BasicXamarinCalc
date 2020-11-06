@@ -1,5 +1,5 @@
 # BasicXamarinCalc
-
+![Continuous Integration](https://github.com/Code2Gether-Discord/BasicXamarinCalc/workflows/Continuous%20Integration/badge.svg)
 A simple calculator app!
 
 The goal is to help beginner C# developers get familiar with a few technologies including:
