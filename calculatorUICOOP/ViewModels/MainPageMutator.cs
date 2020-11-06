@@ -1,7 +1,10 @@
-﻿using calculatorUICOOP.Models;
+﻿using System.Windows.Input;
+using calculatorUICOOP.Models;
+using Xamarin.Forms;
 
 namespace calculatorUICOOP.ViewModels
 {
+
     /// <summary>
     /// The Mutator contains the state of the page, and updates the view model in response to commands
     /// </summary>
@@ -18,6 +21,8 @@ namespace calculatorUICOOP.ViewModels
         private double _lastValue;
         // This prevents the user from entering a decimal more than once
         private bool _hasDecimal;
+        // Tracks if the user is in the middle of entering a number
+        private bool _isEnteringNumber;
 
         public MainPageViewModel ViewModel { get; set; }
         #endregion
@@ -26,74 +31,142 @@ namespace calculatorUICOOP.ViewModels
         public MainPageMutator(MainPageViewModel viewModel)
         {
             ViewModel = viewModel;
+
+            SetupCommands();
         }
         #endregion
 
         #region Methods
 
+        public void SetupCommands()
+        {
+            ViewModel.Number0 = new Command(() => EnterNumber("0"));
+            ViewModel.Number1 = new Command(() => EnterNumber("1"));
+            ViewModel.Number2 = new Command(() => EnterNumber("2"));
+            ViewModel.Number3 = new Command(() => EnterNumber("3"));
+            ViewModel.Number4 = new Command(() => EnterNumber("4"));
+            ViewModel.Number5 = new Command(() => EnterNumber("5"));
+            ViewModel.Number6 = new Command(() => EnterNumber("6"));
+            ViewModel.Number7 = new Command(() => EnterNumber("7"));
+            ViewModel.Number8 = new Command(() => EnterNumber("8"));
+            ViewModel.Number9 = new Command(() => EnterNumber("9"));
+            ViewModel.Number0 = new Command(() => EnterNumber("0"));
+
+            ViewModel.Plus = new Command(Plus);
+            ViewModel.Minus = new Command(Minus);
+            ViewModel.Divide = new Command(Divide);
+            ViewModel.Multiply = new Command(Multiply);
+            ViewModel.Decimal = new Command(TryAddDecimal);
+            ViewModel.Percent = new Command(Percent);
+            ViewModel.Equal = new Command(Equals);
+            ViewModel.Clear = new Command(Clear);
+            ViewModel.Delete = new Command(Delete);
+        }
+
+
         public void EnterNumber(string number)
         {
-            if (_currentDisplayValue == "0")
+            if (!_isEnteringNumber)
             {
-                // In case the number is currently 0, and we try to enter something,
-                // just set the display value to the number itself
                 _currentDisplayValue = number;
+                _isEnteringNumber = true;
+                _hasDecimal = false;
             }
             else
             {
+                if (number == "0" && _currentDisplayValue == "0") return;
                 _currentDisplayValue += number;
             }
             UpdateView();
         }
 
 
-        public void Delete()
+        public void TryAddDecimal()
         {
-            if (_currentDisplayValue.Length > 1)
+            if (!_isEnteringNumber)
             {
-                _currentDisplayValue = _currentDisplayValue.Substring(0, _currentDisplayValue.Length - 1);
-                _hasDecimal = _currentDisplayValue.IndexOf('.') > 0;
+                _currentDisplayValue = "0.";
+                _hasDecimal = true;
+                _isEnteringNumber = true;
+                UpdateView();
             }
             else
             {
-                _currentDisplayValue = "0";
-                _hasDecimal = false;
+                if (!_hasDecimal)
+                {
+                    _currentDisplayValue += ".";
+                    _hasDecimal = true;
+                    _isEnteringNumber = true;
+                    UpdateView();
+                }
             }
-            UpdateView();
+        }
+
+        public void Delete()
+        {
+            if (_isEnteringNumber)
+            {
+                if (_currentDisplayValue.Length > 1)
+                {
+                    _currentDisplayValue = _currentDisplayValue.Substring(0, _currentDisplayValue.Length - 1);
+                    _isEnteringNumber = _currentDisplayValue != "0";
+                    _hasDecimal = _currentDisplayValue.IndexOf('.') > 0;
+                }
+                else
+                {
+                    _currentDisplayValue = "0";
+                    _isEnteringNumber = false;
+                    _hasDecimal = false;
+                }
+                UpdateView();
+            }
         }
 
 
         public void Multiply()
         {
-            PushCurrentValue();
+            EvaluatePendingOperationsAndStartNewNumber();
             _currentOperator = Operator.Multiply;
         }
 
         public void Divide()
         {
-            PushCurrentValue();
+            EvaluatePendingOperationsAndStartNewNumber();
             _currentOperator = Operator.Divide;
         }
 
         public void Plus()
         {
-            PushCurrentValue();
+            EvaluatePendingOperationsAndStartNewNumber();
             _currentOperator = Operator.Add;
         }
 
         public void Minus()
         {
-            PushCurrentValue();
+            EvaluatePendingOperationsAndStartNewNumber();
             _currentOperator = Operator.Subtract;
         }
 
-        public void TryAddDecimal()
+        public void Percent()
         {
-            if (!_hasDecimal)
+            double result = 0;
+
+            // We convert the current value to an actual number whenever we need to evaluate stuff
+            var currentValue = double.Parse(_currentDisplayValue);
+
+            if (_currentOperator == Operator.None)
             {
-                _currentDisplayValue += ".";
-                _hasDecimal = true;
+                result = currentValue / 100;
             }
+            else
+            {
+                result = _lastValue * currentValue / 100;
+            }
+
+            _currentDisplayValue = result.ToString();
+
+            _isEnteringNumber = false;
+
             UpdateView();
         }
 
@@ -104,6 +177,8 @@ namespace calculatorUICOOP.ViewModels
             _currentDisplayValue = result.ToString();
             // clear the operator so we don't get weird side effects
             _currentOperator = Operator.None;
+            _isEnteringNumber = false;
+
             UpdateView();
         }
 
@@ -112,6 +187,7 @@ namespace calculatorUICOOP.ViewModels
             _currentDisplayValue = "0";
             _hasDecimal = false;
             _lastValue = 0;
+            _isEnteringNumber = false;
             _currentOperator = Operator.None;
             UpdateView();
         }
@@ -147,16 +223,15 @@ namespace calculatorUICOOP.ViewModels
 
         /// <summary>
         /// Evaluates the current Display Value with the current operator (if any) and the last value (if there is a current operator)
-        /// and sets the current display value to 0
+        /// and prepares to enter a new number
         /// </summary>
-        private void PushCurrentValue()
+        private void EvaluatePendingOperationsAndStartNewNumber()
         {
-            _lastValue = Evaluate();
-            _currentDisplayValue = "0";
-            // We do not update the View model. At this point the applicaion is expecting a new number to be entered
-            // since the _currentDisplayValue is "0":
-            // - suddenly pressing Equals will not corrupt the current equation
-            // - entering a number will overwrite whatever is currently displayed, just as expected
+            var result = Evaluate();
+            _lastValue = result;
+            _currentDisplayValue = result.ToString();
+            _isEnteringNumber = false;
+            UpdateView();
         }
 
         /// <summary>
