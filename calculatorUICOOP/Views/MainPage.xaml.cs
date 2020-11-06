@@ -13,7 +13,8 @@ namespace calculatorUICOOP
     public partial class MainPage : ContentPage
     {
         #region Fields and Properties
-        MainPageViewModel vm { get; set; }
+        public MainPageViewModel vm { get; set; }
+        private MainPageMutator mutator { get; set; }
         #endregion
 
         #region Constructor
@@ -21,6 +22,9 @@ namespace calculatorUICOOP
         {
             InitializeComponent();
             vm = new MainPageViewModel();
+            mutator = new MainPageMutator(vm);
+            mutator.Clear();
+            BindingContext = vm;
         }
         #endregion
 
@@ -34,43 +38,50 @@ namespace calculatorUICOOP
 
         private void Number_Clicked(object sender, EventArgs e)
         {
-
+            mutator.EnterNumber(((Button)sender).Text);
         }
+
         private void Equals_Clicked(object sender, EventArgs e)
         {
-
+            mutator.Equals();
         }      
+
         private void Clear_Clicked(object sender, EventArgs e)
         {
-
+            mutator.Clear();
         }
         private void Decimal_Clicked(object sender, EventArgs e)
         {
-
+            mutator.TryAddDecimal();
         }
+
         private void Remainder_Clicked(object sender, EventArgs e)
         {
-
         }
+
         private void Minus_Clicked(object sender, EventArgs e)
         {
-
+            mutator.Minus();
         }
+
         private void Plus_Clicked(object sender, EventArgs e)
         {
-
+            mutator.Plus();
         }
+        
         private void Divide_Clicked(object sender, EventArgs e)
         {
-
+            mutator.Divide();
         }
+        
         private void Multiply_Clicked(object sender, EventArgs e)
         {
-
+            mutator.Multiply();
         }
+
         private void Delete_Clicked(object sender, EventArgs e)
         {
-
+            mutator.Delete();
         }
     }
 }

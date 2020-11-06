@@ -1,24 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace calculatorUICOOP.ViewModels
 {
-    public class MainPageViewModel
+    public class MainPageViewModel : INotifyPropertyChanged
     {
-        #region Fields and Properties
-        // TODO
-        #endregion
+        private string _currentValue;
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        #region Constructors
-        public MainPageViewModel()
+        public string CurrentValue
         {
-            // TODO
+            get => _currentValue;
+            set { _currentValue = value; OnPropertyChanged(); }
         }
-        #endregion
 
-        #region Methods
-        // TODO
-        #endregion
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
