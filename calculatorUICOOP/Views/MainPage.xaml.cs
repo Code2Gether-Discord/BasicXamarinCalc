@@ -24,13 +24,7 @@ namespace calculatorUICOOP
         }
         #endregion
 
-        #region Event Handlers
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            var button = (Button)sender;
-            // TODO
-        }
-        #endregion
+        
 
         private void Number_Clicked(object sender, EventArgs e)
         {
