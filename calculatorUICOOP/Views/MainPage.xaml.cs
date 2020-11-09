@@ -28,7 +28,9 @@ namespace calculatorUICOOP
 
         private void Number_Clicked(object sender, EventArgs e)
         {
-
+           var button = (Button)sender;
+            vm.ShowNumberOnDisplay(button.Text);
+            DisplayLabel.Text = vm.DisplayContent;
         }
         private void Equals_Clicked(object sender, EventArgs e)
         {
@@ -36,7 +38,8 @@ namespace calculatorUICOOP
         }      
         private void Clear_Clicked(object sender, EventArgs e)
         {
-
+            vm.ClearScreen();
+            DisplayLabel.Text = vm.DisplayContent;
         }
         private void Decimal_Clicked(object sender, EventArgs e)
         {
