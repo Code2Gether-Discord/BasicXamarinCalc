@@ -11,25 +11,25 @@
 
     <Grid BackgroundColor="gray">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30.1"/>
-            <RowDefinition Height="180"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="30.1" />
+            <RowDefinition Height="180" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="100" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <Label  
+        <Label
             BackgroundColor="DarkMagenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0"
             Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20">
         </Label>
-        <Label  BackgroundColor="LightYellow" Text="0" x:Name="DisplayLabel" Grid.Row="1" Grid.ColumnSpan="4" 
+        <Label  BackgroundColor="LightYellow" Text="{Binding DisplayContent}" x:Name="DisplayLabel" Grid.Row="1" Grid.ColumnSpan="4"
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
 

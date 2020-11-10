@@ -1,34 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace calculatorUICOOP.ViewModels
+﻿namespace calculatorUICOOP.ViewModels
 {
     public class MainPageViewModel
     {
-        public string DisplayContent { get; private set; } = "0";
         #region Fields and Properties
-        // TODO
-        #endregion
 
-        #region Constructors
-        public MainPageViewModel()
-        {
-            // TODO
-        }
-        #endregion
+        public string DisplayContent { get; private set; }
+
+        #endregion Fields and Properties
 
         #region Methods
-        // TODO
+
         public void ShowNumberOnDisplay(string textToDisplay)
         {
-            if (DisplayContent.StartsWith("0"))
-            {
-                DisplayContent = "";
-            }            
-            DisplayContent += textToDisplay;          
+            DisplayContent += textToDisplay;
+            var removedLeadingZeros = decimal.Parse(DisplayContent);
+            DisplayContent = removedLeadingZeros.ToString();
         }
-        public void ClearScreen() { DisplayContent = "0"; }
-        #endregion
+
+        public void ClearScreen()
+        {
+            DisplayContent = "0";
+        }
+
+        #endregion Methods
     }
 }
