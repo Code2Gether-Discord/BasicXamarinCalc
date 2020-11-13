@@ -21,6 +21,7 @@ namespace calculatorUICOOP.ViewModels
                 //when we change the backing field update it and the actual display
                 OnPropertyChanged(nameof(displayContent));
                 OnPropertyChanged(nameof(Display));
+                
             } }
         public string Display => $"{DisplayContent}";
         public event PropertyChangedEventHandler PropertyChanged;
