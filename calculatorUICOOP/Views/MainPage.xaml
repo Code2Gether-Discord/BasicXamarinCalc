@@ -2,9 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:calculatorUICOOP.ViewModels"
              mc:Ignorable="d"
-             x:Class="calculatorUICOOP.MainPage">
+             x:Class="calculatorUICOOP.MainPage"
+            
+          >
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel/>
+    </ContentPage.BindingContext>
 
     <!--StaticResource styles numButton and opButton is in App.xaml -->
     <!-- Test commit -->
@@ -29,7 +34,7 @@
             BackgroundColor="DarkMagenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0"
             Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20">
         </Label>
-        <Label  BackgroundColor="LightYellow" Text="{Binding DisplayContent}" x:Name="DisplayLabel" Grid.Row="1" Grid.ColumnSpan="4"
+        <Label  BackgroundColor="LightYellow" Text="{Binding Display}"  Grid.Row="1" Grid.ColumnSpan="4"
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
 
