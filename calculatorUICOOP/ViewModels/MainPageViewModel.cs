@@ -7,7 +7,7 @@ namespace calculatorUICOOP.ViewModels
         #region Fields and Properties
         //backing field
          string displayContent;
-        public string TemporaryDisplay { get; set; }
+      
 
         public string DisplayContent
         {
@@ -25,9 +25,9 @@ namespace calculatorUICOOP.ViewModels
             } }
         public string Display => $"{DisplayContent}";
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(string displayContent)
+        void OnPropertyChanged(string text)
         { //? is not null, notify xamarin forms to update ui
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(displayContent));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
         }
 
         #endregion Fields and Properties
@@ -36,8 +36,8 @@ namespace calculatorUICOOP.ViewModels
 
        public void ShowNumberOnDisplay(string textToDisplay)
         {
-            TemporaryDisplay += textToDisplay;
-            var removedLeadingZeros = decimal.Parse(TemporaryDisplay);
+            DisplayContent += textToDisplay;
+            var removedLeadingZeros = decimal.Parse(DisplayContent);
             DisplayContent = removedLeadingZeros.ToString();
         }
       

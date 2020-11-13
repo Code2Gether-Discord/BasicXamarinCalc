@@ -20,7 +20,7 @@ namespace calculatorUICOOP
         {
             InitializeComponent();
             vm = new MainPageViewModel();
-            BindingContext = new MainPageViewModel();
+            BindingContext = vm;
         }
 
         #endregion Constructor
