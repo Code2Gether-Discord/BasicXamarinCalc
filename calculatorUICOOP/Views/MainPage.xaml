@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:calculatorUICOOP.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:calculatorUICOOP.ViewModels"
              mc:Ignorable="d"
              x:Class="calculatorUICOOP.MainPage"
             
@@ -31,14 +32,14 @@
         </Grid.ColumnDefinitions>
 
         <Label
-            BackgroundColor="DarkMagenta" Margin="-6" Text="  Calculator" TextColor="White" Grid.Row="0"
+            BackgroundColor="DarkMagenta" Margin="-6" Text=" Calculator" TextColor="White" Grid.Row="0"
             Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20">
         </Label>
         <Label  BackgroundColor="LightYellow" Text="{Binding Display}"  Grid.Row="1" Grid.ColumnSpan="4"
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
 
-        <Button Clicked="Number_Clicked"   Style="{StaticResource numButton}" Text="7" Grid.Row="2" Grid.Column="0"></Button>
+        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="7" Grid.Row="2" Grid.Column="0"></Button>
         <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="8" Grid.Row="2" Grid.Column="1"></Button>
         <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="9" Grid.Row="2" Grid.Column="2"></Button>
 

@@ -10,7 +10,7 @@ namespace calculatorUICOOP
     {
         #region Fields and Properties
 
-     //   private MainPageViewModel vm { get; set; }
+        private MainPageViewModel vm { get; set; }
 
         #endregion Fields and Properties
 
@@ -19,17 +19,18 @@ namespace calculatorUICOOP
         public MainPage()
         {
             InitializeComponent();
-           
+            vm = new MainPageViewModel();
+            BindingContext = new MainPageViewModel();
         }
 
         #endregion Constructor
 
-        private void Number_Clicked(object sender, EventArgs e)
+      private void Number_Clicked(object sender, EventArgs e)
         {
-            var button = (Button)sender;
+           var button = (Button)sender;
 
-      //      vm.ShowNumberOnDisplay(button.Text);
-        //    DisplayLabel.Text = vm.DisplayContent;
+          vm.ShowNumberOnDisplay(button.Text);
+
         }
 
         private void Equals_Clicked(object sender, EventArgs e)
@@ -38,8 +39,7 @@ namespace calculatorUICOOP
 
         private void Clear_Clicked(object sender, EventArgs e)
         {
-        //    vm.ClearScreen();
-       //     DisplayLabel.Text = vm.DisplayContent;
+            vm.ClearScreen();
         }
 
         private void Decimal_Clicked(object sender, EventArgs e)
@@ -56,10 +56,10 @@ namespace calculatorUICOOP
 
         private void Plus_Clicked(object sender, EventArgs e)
         {
-            var button = (Button)sender;
+           var button = (Button)sender;
 
-        //    vm.ShowPlusOnDisplay(button.Text);
-         //   DisplayLabel.Text = vm.DisplayContent;
+         vm.ShowPlusOnDisplay(button.Text);
+     
         }
 
         private void Divide_Clicked(object sender, EventArgs e)
@@ -73,5 +73,6 @@ namespace calculatorUICOOP
         private void Delete_Clicked(object sender, EventArgs e)
         {
         }
+     
     }
 }
