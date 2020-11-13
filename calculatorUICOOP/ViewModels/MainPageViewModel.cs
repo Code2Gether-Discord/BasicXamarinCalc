@@ -6,12 +6,14 @@ namespace calculatorUICOOP.ViewModels
     public class MainPageViewModel : INotifyPropertyChanged
     {
         #region Fields and Properties
+
         //backing field
-         string displayContent;    
+        private string displayContent;
 
         public string DisplayContent
         {
-            get => displayContent; set
+            get => displayContent;
+            set
             {
                 if (displayContent == value)
                 {
@@ -19,12 +21,13 @@ namespace calculatorUICOOP.ViewModels
                 }
                 displayContent = value;
                 //when we change the backing field update it and the actual display
-                
-                OnPropertyChanged(nameof(DisplayContent));               
-            } }
-        
+                OnPropertyChanged(nameof(DisplayContent));
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged([CallerMemberName] string text = null)
+
+        private void OnPropertyChanged([CallerMemberName] string text = null)
         { //? is not null, notify xamarin forms to update ui
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
         }
@@ -33,23 +36,23 @@ namespace calculatorUICOOP.ViewModels
 
         #region Methods
 
-       public void ShowNumberOnDisplay(string textToDisplay)
+        public void ShowNumberOnDisplay(string textToDisplay)
         {
             DisplayContent += textToDisplay;
             var removedLeadingZeros = decimal.Parse(DisplayContent);
             DisplayContent = removedLeadingZeros.ToString();
         }
-      
+
         public void ClearScreen()
         {
             DisplayContent = "0";
         }
 
-        public void ShowPlusOnDisplay(string textToDisplay)
+        public void ShowPlusOnDisplay()
         {
-            DisplayContent += textToDisplay;
+            DisplayContent += "+";
         }
-       
+
         #endregion Methods
     }
 }

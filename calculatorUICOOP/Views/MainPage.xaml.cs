@@ -25,12 +25,11 @@ namespace calculatorUICOOP
 
         #endregion Constructor
 
-      private void Number_Clicked(object sender, EventArgs e)
+        private void Number_Clicked(object sender, EventArgs e)
         {
-           var button = (Button)sender;
+            var button = (Button)sender;
 
-          vm.ShowNumberOnDisplay(button.Text);
-
+            vm.ShowNumberOnDisplay(button.Text);
         }
 
         private void Equals_Clicked(object sender, EventArgs e)
@@ -56,10 +55,7 @@ namespace calculatorUICOOP
 
         private void Plus_Clicked(object sender, EventArgs e)
         {
-           var button = (Button)sender;
-
-         vm.ShowPlusOnDisplay(button.Text);
-     
+            vm.ShowPlusOnDisplay();
         }
 
         private void Divide_Clicked(object sender, EventArgs e)
@@ -73,6 +69,5 @@ namespace calculatorUICOOP
         private void Delete_Clicked(object sender, EventArgs e)
         {
         }
-     
     }
 }
