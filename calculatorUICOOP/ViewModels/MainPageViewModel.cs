@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace calculatorUICOOP.ViewModels
 {
@@ -6,8 +7,7 @@ namespace calculatorUICOOP.ViewModels
     {
         #region Fields and Properties
         //backing field
-         string displayContent;
-      
+         string displayContent;    
 
         public string DisplayContent
         {
@@ -19,13 +19,12 @@ namespace calculatorUICOOP.ViewModels
                 }
                 displayContent = value;
                 //when we change the backing field update it and the actual display
-                OnPropertyChanged(nameof(displayContent));
-                OnPropertyChanged(nameof(Display));
                 
+                OnPropertyChanged(nameof(DisplayContent));               
             } }
-        public string Display => $"{DisplayContent}";
+        
         public event PropertyChangedEventHandler PropertyChanged;
-        void OnPropertyChanged(string text)
+        void OnPropertyChanged([CallerMemberName] string text = null)
         { //? is not null, notify xamarin forms to update ui
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
         }

@@ -35,7 +35,7 @@
             BackgroundColor="DarkMagenta" Margin="-6" Text=" Calculator" TextColor="White" Grid.Row="0"
             Grid.ColumnSpan="4" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"  FontSize="20">
         </Label>
-        <Label  BackgroundColor="LightYellow" Text="{Binding Display}"  Grid.Row="1" Grid.ColumnSpan="4"
+        <Label  BackgroundColor="LightYellow" Text="{Binding DisplayContent}"  Grid.Row="1" Grid.ColumnSpan="4"
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
 
