@@ -10,7 +10,7 @@ namespace calculatorUICOOP.ViewModels
         #region Fields 
         private string displayContent;
         #endregion
-        
+
         #region Properties
         public string DisplayContent
         {
@@ -27,31 +27,49 @@ namespace calculatorUICOOP.ViewModels
             }
         }
         #endregion
-        
+
         #region Commands
-        public ICommand numberInputCommand { get; set; }
-        // todo: create a command for operators. Do we need a command parameter?
-        // todo: create a command for "clear". Again... do we need a command parameter?
+        public ICommand NumberInputCommand { get; set; }
+        public ICommand ClearInputCommand { get; set; }
+        public ICommand DeleteInputCommand { get; set; }
+        public ICommand DivideInputCommand { get; set; }
+        public ICommand MultiplyInputCommand { get; set; }
+        public ICommand clearInputCommand { get; set; }
+        public ICommand PlusInputCommand { get; set; }
+        public ICommand MinusInputCommand { get; set; }
+        public ICommand RemainderInputCommand { get; set; }
+        public ICommand DecimalInputCommand { get; set; }
+        public ICommand EqualsInputCommands { get; set; }
+
         #endregion
 
         #region Delegates
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
-       
+
         #region Constructor
         public MainPageViewModel()
         {
-            numberInputCommand = new Command<string>(ShowNumberOnDisplay);
+            NumberInputCommand = new Command<string>(ShowNumberOnDisplay);
+            ClearInputCommand = new Command(ClearScreen);
+            DeleteInputCommand = new Command(DeleteLastInput);
+            DivideInputCommand = new Command<string>(ShowDivideOnDisplay);
+            MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
+            PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
+            MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
+            RemainderInputCommand = new Command<string>(ShowRemainderOnDisplay);
+            DecimalInputCommand = new Command<string>(ShowDecimalOnDisplay);
+            EqualsInputCommands = new Command(Equals);
         }
         #endregion
 
         #region Methods
         private void OnPropertyChanged([CallerMemberName] string text = null)
-        {  
+        {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
         }
-        
+
         public void ShowNumberOnDisplay(string textToDisplay)
         {
             DisplayContent += textToDisplay;
@@ -64,10 +82,48 @@ namespace calculatorUICOOP.ViewModels
             DisplayContent = "0";
         }
 
-        public void ShowPlusOnDisplay()
+        public void ShowPlusOnDisplay(string plus)
         {
-            
+
         }
-        #endregion Methods
+        public void ShowMultiplyOnDisplay(string multiply)
+        {
+
+        }
+        public void ShowMinusOnDisplay(string minus)
+        {
+
+        }
+        public void ShowdivideOnDisplay(string divide)
+        {
+
+
+        }
+        public void DeleteLastInput()
+        {
+            if (DisplayContent != "")
+            {
+                DisplayContent = DisplayContent.Remove(DisplayContent.Length - 1);
+            }
+           
+        }
+
+        public void ShowRemainderOnDisplay(string remainder)
+        {
+
+        }
+        public void ShowDecimalOnDisplay(string decimalDot)
+        {
+
+        }
+        public void Equals()
+        {
+
+        }
+        public void ShowDivideOnDisplay(string divide)
+        {
+
+        }
+        #endregion 
     }
 }
