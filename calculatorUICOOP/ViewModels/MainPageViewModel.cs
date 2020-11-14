@@ -94,7 +94,7 @@ namespace calculatorUICOOP.ViewModels
         {
 
         }
-        public void ShowdivideOnDisplay(string divide)
+        public void ShowDivideOnDisplay(string divide)
         {
 
 
