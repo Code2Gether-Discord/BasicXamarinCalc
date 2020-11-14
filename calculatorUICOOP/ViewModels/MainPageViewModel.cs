@@ -50,7 +50,7 @@ namespace calculatorUICOOP.ViewModels
 
         public void ShowPlusOnDisplay()
         {
-            DisplayContent += "+";
+            
         }
 
         #endregion Methods
