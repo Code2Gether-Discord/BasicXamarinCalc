@@ -1,15 +1,17 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace calculatorUICOOP.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        #region Fields and Properties
-
-        //backing field
+        #region Fields 
         private string displayContent;
-
+        #endregion
+        
+        #region Properties
         public string DisplayContent
         {
             get => displayContent;
@@ -20,22 +22,36 @@ namespace calculatorUICOOP.ViewModels
                     return;
                 }
                 displayContent = value;
-                //when we change the backing field update it and the actual display
-                OnPropertyChanged(nameof(DisplayContent));
+                // Send a "push" notification to the UI letting it know the DisplayContent has changed.
+                OnPropertyChanged();
             }
         }
+        #endregion
+        
+        #region Commands
+        public ICommand numberInputCommand { get; set; }
+        // todo: create a command for operators. Do we need a command parameter?
+        // todo: create a command for "clear". Again... do we need a command parameter?
+        #endregion
 
+        #region Delegates
         public event PropertyChangedEventHandler PropertyChanged;
+        #endregion
 
-        private void OnPropertyChanged([CallerMemberName] string text = null)
-        { //? is not null, notify xamarin forms to update ui
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
+       
+        #region Constructor
+        public MainPageViewModel()
+        {
+            numberInputCommand = new Command<string>(ShowNumberOnDisplay);
         }
-
-        #endregion Fields and Properties
+        #endregion
 
         #region Methods
-
+        private void OnPropertyChanged([CallerMemberName] string text = null)
+        {  
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
+        }
+        
         public void ShowNumberOnDisplay(string textToDisplay)
         {
             DisplayContent += textToDisplay;
@@ -52,7 +68,6 @@ namespace calculatorUICOOP.ViewModels
         {
             
         }
-
         #endregion Methods
     }
 }

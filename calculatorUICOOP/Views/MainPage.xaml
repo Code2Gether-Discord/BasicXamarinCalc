@@ -5,15 +5,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:local="clr-namespace:calculatorUICOOP.ViewModels"
              mc:Ignorable="d"
-             x:Class="calculatorUICOOP.MainPage"
-            
-          >
-    <ContentPage.BindingContext>
-        <local:MainPageViewModel/>
-    </ContentPage.BindingContext>
+             d:BindingContext="local:MainPageViewModel"
+             x:Class="calculatorUICOOP.MainPage">
+    
 
+  
     <!--StaticResource styles numButton and opButton is in App.xaml -->
-    <!-- Test commit -->
+    <!-- Test commit --> 
 
     <Grid BackgroundColor="gray">
         <Grid.RowDefinitions>
@@ -39,22 +37,25 @@
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
 
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="7" Grid.Row="2" Grid.Column="0"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="8" Grid.Row="2" Grid.Column="1"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="9" Grid.Row="2" Grid.Column="2"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="9" Style="{StaticResource numButton}" Text="9" Grid.Row="2" Grid.Column="2"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="8" Style="{StaticResource numButton}" Text="8" Grid.Row="2" Grid.Column="1"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="7" Style="{StaticResource numButton}" Text="7" Grid.Row="2" Grid.Column="0"></Button>
 
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="4" Grid.Row="3" Grid.Column="0"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="5" Grid.Row="3" Grid.Column="1"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="6" Grid.Row="3" Grid.Column="2"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="6" Style="{StaticResource numButton}" Text="4" Grid.Row="3" Grid.Column="0"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="5" Style="{StaticResource numButton}" Text="5" Grid.Row="3" Grid.Column="1"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="4" Style="{StaticResource numButton}" Text="6" Grid.Row="3" Grid.Column="2"></Button>
 
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="1" Grid.Row="4" Grid.Column="0"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="2" Grid.Row="4" Grid.Column="1"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="3" Grid.Row="4" Grid.Column="2"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="3" Style="{StaticResource numButton}" Text="1" Grid.Row="4" Grid.Column="0"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="2" Style="{StaticResource numButton}" Text="2" Grid.Row="4" Grid.Column="1"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="1" Style="{StaticResource numButton}" Text="3" Grid.Row="4" Grid.Column="2"></Button>
 
+        <!-- I hate my event handler. Give me a command instead! -->
         <Button Clicked="Decimal_Clicked" Style="{StaticResource numButton}" Text="." Grid.Row="5" Grid.Column="0"></Button>
-        <Button Clicked="Number_Clicked" Style="{StaticResource numButton}" Text="0" Grid.Row="5" Grid.Column="1"></Button>
+        <Button Command="{Binding numberInputCommand}" CommandParameter="0" Style="{StaticResource numButton}" Text="0" Grid.Row="5" Grid.Column="1"></Button>
+        <!-- I hate my event handler. Give me a command instead! -->
         <Button Clicked="Equals_Clicked" Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
 
+        <!-- I hate my event handlers. Give me commands instead! -->
         <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
             <Button Clicked="Delete_Clicked" FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
             <Button Clicked="Divide_Clicked" Style="{StaticResource opButton}" Text="/"></Button>
