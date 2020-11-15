@@ -8,20 +8,20 @@ namespace calculatorUICOOP.ViewModels
     public class MainPageViewModel : INotifyPropertyChanged
     {
         #region Fields 
-        private string displayContent;
+        private string _displayContent;
         #endregion
 
         #region Properties
         public string DisplayContent
         {
-            get => displayContent;
+            get => _displayContent;
             set
             {
-                if (displayContent == value)
+                if (_displayContent == value)
                 {
                     return;
                 }
-                displayContent = value;
+                _displayContent = value;
                 // Send a "push" notification to the UI letting it know the DisplayContent has changed.
                 OnPropertyChanged();
             }
@@ -34,7 +34,6 @@ namespace calculatorUICOOP.ViewModels
         public ICommand DeleteInputCommand { get; set; }
         public ICommand DivideInputCommand { get; set; }
         public ICommand MultiplyInputCommand { get; set; }
-        public ICommand clearInputCommand { get; set; }
         public ICommand PlusInputCommand { get; set; }
         public ICommand MinusInputCommand { get; set; }
         public ICommand RemainderInputCommand { get; set; }
@@ -46,7 +45,6 @@ namespace calculatorUICOOP.ViewModels
         #region Delegates
         public event PropertyChangedEventHandler PropertyChanged;
         #endregion
-
 
         #region Constructor
         public MainPageViewModel()
@@ -86,19 +84,17 @@ namespace calculatorUICOOP.ViewModels
         {
 
         }
+
         public void ShowMultiplyOnDisplay(string multiply)
         {
 
         }
+
         public void ShowMinusOnDisplay(string minus)
         {
 
         }
-        public void ShowDivideOnDisplay(string divide)
-        {
 
-
-        }
         public void DeleteLastInput()
         {
             if (DisplayContent != "")
@@ -112,14 +108,17 @@ namespace calculatorUICOOP.ViewModels
         {
 
         }
+
         public void ShowDecimalOnDisplay(string decimalDot)
         {
 
         }
+
         public void Equals()
         {
 
         }
+
         public void ShowDivideOnDisplay(string divide)
         {
 
