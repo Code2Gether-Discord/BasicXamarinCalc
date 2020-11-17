@@ -51,7 +51,7 @@
 
 - Given the display is not currently “0”
 - When the “C” (clear) button is pressed
-- Then reset the currently displayed text to “0”
+- Then remove the last character in the displayed text
 
 - Given a mathematical operator has been pressed, or the display is not currently “0”, or a previously input number has been stored
 - When the “CE” (clear everything) button is pressed
