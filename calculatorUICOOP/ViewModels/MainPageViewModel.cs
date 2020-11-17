@@ -11,9 +11,9 @@ namespace calculatorUICOOP.ViewModels
     {
         #region Fields 
         private string _displayContent;
-        private double number1;
+        private double _number1;
         private string _operator;
-        private bool hasDecimal = false;
+        private bool _hasDecimal = false;
         #endregion
 
         #region Properties
@@ -32,7 +32,7 @@ namespace calculatorUICOOP.ViewModels
             }
         }
         #endregion
-        
+
         #region Commands
         public ICommand NumberInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
@@ -44,7 +44,6 @@ namespace calculatorUICOOP.ViewModels
         public ICommand RemainderInputCommand { get; set; }
         public ICommand DecimalInputCommand { get; set; }
         public ICommand EqualsInputCommands { get; set; }
-
         #endregion
 
         #region Delegates
@@ -83,11 +82,12 @@ namespace calculatorUICOOP.ViewModels
         public void ClearScreen()
         {
             DisplayContent = "0";
-            hasDecimal = false;
+            _hasDecimal = false;
         }
+
         private void AssignOperator(string _operator)
         {
-            number1 = Convert.ToDouble(DisplayContent);
+            _number1 = Convert.ToDouble(DisplayContent);
             this._operator = _operator;
             ClearScreen();
         }
@@ -123,35 +123,35 @@ namespace calculatorUICOOP.ViewModels
 
         public void ShowDecimalOnDisplay(string decimalDot)
         {
-            if (!hasDecimal)
+            if (!_hasDecimal)
             {
                 DisplayContent += decimalDot;
-                hasDecimal = true;
+                _hasDecimal = true;
             }
         }
 
         public void Equals()
         {
+            double _number2 = Convert.ToDouble(DisplayContent);
             switch (_operator)
             {
                 case "+":
-                    DisplayContent = MathLogic.Add(number1, Convert.ToDouble(DisplayContent)).ToString();
+                    DisplayContent = MathLogic.Add(_number1, _number2).ToString();
                     break;
                 case "-":
-                    DisplayContent = MathLogic.Subtract(number1, Convert.ToDouble(DisplayContent)).ToString();
+                    DisplayContent = MathLogic.Subtract(_number1, _number2).ToString();
                     break;
                 case "*":
-                    DisplayContent = MathLogic.Multiply(number1, Convert.ToDouble(DisplayContent)).ToString();
+                    DisplayContent = MathLogic.Multiply(_number1, _number2).ToString();
                     break;
                 case "/":
                     if (DisplayContent != "0")
-                        DisplayContent = MathLogic.Divide(number1, Convert.ToDouble(DisplayContent)).ToString();
+                        DisplayContent = MathLogic.Divide(_number1, _number2).ToString();
                     else
                         DisplayContent = "Can't Divide by 0";
-                    
                     break;
                 case "%":
-                    DisplayContent = (number1 % Convert.ToDouble(DisplayContent)).ToString();
+                    DisplayContent = MathLogic.Module(_number1, _number2).ToString();
                     break;
             }
         }
