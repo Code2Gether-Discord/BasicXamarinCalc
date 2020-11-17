@@ -29,7 +29,7 @@
 
 - Given a number (X) has been entered
 - When a mathematical operator has been pressed
-- Then store the operator as the current operation and end the input for the first number (X), then start the input for the second (Y)
+- Then store the operator as the current operation and end the input for the first number (X), then start the input for the second (Y), and the last number entered should remain until the next number is entered
 
 - Given a number other than default has been entered
 - When the % operator has been pressed
