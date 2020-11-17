@@ -1,4 +1,6 @@
-﻿namespace calculatorUICOOP.Models
+﻿using System;
+
+namespace calculatorUICOOP.Models
 {
     public static class MathLogic
     {
@@ -32,6 +34,11 @@
         public static double Divide(double num1, double num2)
         {
             return num1 / num2;
+        }
+
+        public static double Percent(double num)
+        {
+            throw new NotImplementedException();
         }
 
     }

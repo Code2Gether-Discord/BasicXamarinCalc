@@ -16,7 +16,6 @@ namespace calculatorUICOOP.Tests
         /// <summary>
         /// Expected result: Should never have leading zeros when given a string of numerical characters
         /// </summary>
-        [Test]
         [TestCase("5","0005")]
         [TestCase("5", "05")]
         [TestCase("0.005", "0.005")]
@@ -30,20 +29,36 @@ namespace calculatorUICOOP.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [Test]
-        public void ClearScreenTest()
+        [TestCase("0","5")]
+        [TestCase("0", "55.01")]
+        [TestCase("0", "0")]
+        [TestCase("0", "max")]
+        [TestCase("0", "min")]
+        public void ClearScreenTest(string expected, string input)
         {
-            var initial = _vm.DisplayContent;
+            switch (input)
+            {
+                case "max":
+                    input = decimal.MaxValue.ToString();
+                    break;
+                case "min":
+                    input = decimal.MinValue.ToString();
+                    break;
+            }
+
+            _vm.DisplayContent = input;
             _vm.ClearScreen();
-            var post = _vm.DisplayContent;
-            Assert.AreNotEqual(initial,post);
+            var actual = _vm.DisplayContent;
+            Assert.AreEqual(expected, actual);
         }
 
-        [Test]
         [TestCase("50","500")]
         [TestCase("5.55", "5.555")]
-        [TestCase("0", "1")]    // TODO open bug
-        [TestCase("0", "5")]    // TODO open bug
+        [TestCase("55", "55.01")]
+        [TestCase("55", "55.000000001")]
+        [TestCase("0", "1")]
+        [TestCase("0", "5")]
+        [TestCase("0", "")]
         public void DeleteLastInputTest(string expected, string input)
         {
             _vm.DisplayContent = input;

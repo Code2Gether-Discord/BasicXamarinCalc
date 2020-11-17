@@ -43,5 +43,11 @@ namespace calculatorUICOOP.Tests
             else
                 Assert.AreEqual(expected, MathLogic.Divide(x, y));
         }
+
+        [TestCase(0.01, 1)]
+        [TestCase(0.1, 10)]
+        [TestCase(1, 100)]
+        public void PercentTest(double expected, double input) =>
+            Assert.AreEqual(expected, MathLogic.Percent(input));
     }
 }
