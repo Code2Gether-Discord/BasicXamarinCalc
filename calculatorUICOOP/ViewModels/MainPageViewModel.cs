@@ -1,7 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
+using calculatorUICOOP.Models;
 
 namespace calculatorUICOOP.ViewModels
 {
@@ -9,6 +11,9 @@ namespace calculatorUICOOP.ViewModels
     {
         #region Fields 
         private string _displayContent;
+        private double number1;
+        private string _operator;
+        private bool hasDecimal = false;
         #endregion
 
         #region Properties
@@ -27,7 +32,7 @@ namespace calculatorUICOOP.ViewModels
             }
         }
         #endregion
-
+        
         #region Commands
         public ICommand NumberInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
@@ -78,21 +83,28 @@ namespace calculatorUICOOP.ViewModels
         public void ClearScreen()
         {
             DisplayContent = "0";
+            hasDecimal = false;
+        }
+        private void AssignOperator(string _operator)
+        {
+            number1 = Convert.ToDouble(DisplayContent);
+            this._operator = _operator;
+            ClearScreen();
         }
 
         public void ShowPlusOnDisplay(string plus)
         {
-
+            AssignOperator(plus);
         }
 
         public void ShowMultiplyOnDisplay(string multiply)
         {
-
+            AssignOperator(multiply);
         }
 
         public void ShowMinusOnDisplay(string minus)
         {
-
+            AssignOperator(minus);
         }
 
         public void DeleteLastInput()
@@ -106,22 +118,47 @@ namespace calculatorUICOOP.ViewModels
 
         public void ShowRemainderOnDisplay(string remainder)
         {
-
+            AssignOperator(remainder);
         }
 
         public void ShowDecimalOnDisplay(string decimalDot)
         {
-
+            if (!hasDecimal)
+            {
+                DisplayContent += decimalDot;
+                hasDecimal = true;
+            }
         }
 
         public void Equals()
         {
-
+            switch (_operator)
+            {
+                case "+":
+                    DisplayContent = MathLogic.Add(number1, Convert.ToDouble(DisplayContent)).ToString();
+                    break;
+                case "-":
+                    DisplayContent = MathLogic.Subtract(number1, Convert.ToDouble(DisplayContent)).ToString();
+                    break;
+                case "*":
+                    DisplayContent = MathLogic.Multiply(number1, Convert.ToDouble(DisplayContent)).ToString();
+                    break;
+                case "/":
+                    if (DisplayContent != "0")
+                        DisplayContent = MathLogic.Divide(number1, Convert.ToDouble(DisplayContent)).ToString();
+                    else
+                        DisplayContent = "Can't Divide by 0";
+                    
+                    break;
+                case "%":
+                    DisplayContent = (number1 % Convert.ToDouble(DisplayContent)).ToString();
+                    break;
+            }
         }
 
         public void ShowDivideOnDisplay(string divide)
         {
-
+            AssignOperator(divide);
         }
         #endregion 
     }
