@@ -59,6 +59,7 @@ namespace calculatorUICOOP.Tests
         [TestCase("0", "1")]
         [TestCase("0", "5")]
         [TestCase("0", "")]
+        [TestCase("0", null)]
         public void DeleteLastInputTest(string expected, string input)
         {
             _vm.DisplayContent = input;

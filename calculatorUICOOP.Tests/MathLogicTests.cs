@@ -31,7 +31,6 @@ namespace calculatorUICOOP.Tests
             Assert.AreEqual(expected, MathLogic.Multiply(x, y));
 
         [TestCase(10, 100, 10)]
-        [TestCase(1, 0, 0, true)]
         [TestCase(0, 5, 0, true)]
         public void DivideTest(double expected, double x, double y, bool isNegativeTest = false)
         {
