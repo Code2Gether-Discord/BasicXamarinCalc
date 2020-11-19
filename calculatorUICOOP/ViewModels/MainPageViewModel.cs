@@ -98,9 +98,13 @@ namespace calculatorUICOOP.ViewModels
 
         public void DeleteLastInput()
         {
-            if (DisplayContent != "")
+            if (DisplayContent.Length > 1)
             {
                 DisplayContent = DisplayContent.Remove(DisplayContent.Length - 1);
+            }
+            else
+            {
+                ClearScreen();
             }
            
         }
