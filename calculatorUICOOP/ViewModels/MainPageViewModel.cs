@@ -49,6 +49,7 @@ namespace calculatorUICOOP.ViewModels
         #region Constructor
         public MainPageViewModel()
         {
+            DisplayContent = "0";
             NumberInputCommand = new Command<string>(ShowNumberOnDisplay);
             ClearInputCommand = new Command(ClearScreen);
             DeleteInputCommand = new Command(DeleteLastInput);
