@@ -1,7 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
+using calculatorUICOOP.Models;
 
 namespace calculatorUICOOP.ViewModels
 {
@@ -9,6 +11,9 @@ namespace calculatorUICOOP.ViewModels
     {
         #region Fields 
         private string _displayContent;
+        private double _number1;
+        private string _operator;
+        private bool _hasDecimal = false;
         #endregion
 
         #region Properties
@@ -39,7 +44,6 @@ namespace calculatorUICOOP.ViewModels
         public ICommand RemainderInputCommand { get; set; }
         public ICommand DecimalInputCommand { get; set; }
         public ICommand EqualsInputCommands { get; set; }
-
         #endregion
 
         #region Delegates
@@ -79,21 +83,29 @@ namespace calculatorUICOOP.ViewModels
         public void ClearScreen()
         {
             DisplayContent = "0";
+            _hasDecimal = false;
+        }
+
+        private void AssignOperator(string _operator)
+        {
+            _number1 = Convert.ToDouble(DisplayContent);
+            this._operator = _operator;
+            ClearScreen();
         }
 
         public void ShowPlusOnDisplay(string plus)
         {
-
+            AssignOperator(plus);
         }
 
         public void ShowMultiplyOnDisplay(string multiply)
         {
-
+            AssignOperator(multiply);
         }
 
         public void ShowMinusOnDisplay(string minus)
         {
-
+            AssignOperator(minus);
         }
 
         public void DeleteLastInput()
@@ -106,27 +118,52 @@ namespace calculatorUICOOP.ViewModels
             {
                 ClearScreen();
             }
-           
+
         }
 
         public void ShowRemainderOnDisplay(string remainder)
         {
-
+            AssignOperator(remainder);
         }
 
         public void ShowDecimalOnDisplay(string decimalDot)
         {
-
+            if (!_hasDecimal)
+            {
+                DisplayContent += decimalDot;
+                _hasDecimal = true;
+            }
         }
 
         public void Equals()
         {
-
+            double _number2 = Convert.ToDouble(DisplayContent);
+            switch (_operator)
+            {
+                case "+":
+                    DisplayContent = MathLogic.Add(_number1, _number2).ToString();
+                    break;
+                case "-":
+                    DisplayContent = MathLogic.Subtract(_number1, _number2).ToString();
+                    break;
+                case "*":
+                    DisplayContent = MathLogic.Multiply(_number1, _number2).ToString();
+                    break;
+                case "/":
+                    if (DisplayContent != "0")
+                        DisplayContent = MathLogic.Divide(_number1, _number2).ToString();
+                    else
+                        DisplayContent = "Can't Divide by 0";
+                    break;
+                case "%":
+                    DisplayContent = MathLogic.Module(_number1, _number2).ToString();
+                    break;
+            }
         }
 
         public void ShowDivideOnDisplay(string divide)
         {
-
+            AssignOperator(divide);
         }
         #endregion 
     }
