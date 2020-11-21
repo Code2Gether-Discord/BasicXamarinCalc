@@ -52,7 +52,7 @@
       
         <Button Command="{Binding DecimalInputCommand}" CommandParameter="." Style="{StaticResource numButton}" Text="." Grid.Row="5" Grid.Column="0"></Button>
         <Button Command="{Binding NumberInputCommand}" CommandParameter="0" Style="{StaticResource numButton}" Text="0" Grid.Row="5" Grid.Column="1"></Button>
-        <Button Command="{Binding EqualsInputCommands}" Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
+        <Button Command="{Binding EqualsInputCommand}" Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
 
       
         <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
