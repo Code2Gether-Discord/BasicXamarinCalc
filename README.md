@@ -13,6 +13,8 @@ The goal is to help beginner C# developers get familiar with a few technologies 
 
 # How do I contribute?
 
+- Pull Requests via Forking will be closed. You must PR via a branch within this repo.
+
 1. Pull `master` branch
 2. Create a local branch based off of `master`
 3. Assign an Issue to yourself
