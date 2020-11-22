@@ -41,7 +41,7 @@ namespace calculatorUICOOP.ViewModels
         public ICommand MultiplyInputCommand { get; set; }
         public ICommand PlusInputCommand { get; set; }
         public ICommand MinusInputCommand { get; set; }
-        public ICommand RemainderInputCommand { get; set; }
+        public ICommand PercentInputCommand { get; set; }
         public ICommand DecimalInputCommand { get; set; }
         public ICommand EqualsInputCommand { get; set; }
         #endregion
@@ -61,7 +61,7 @@ namespace calculatorUICOOP.ViewModels
             MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
             PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
             MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
-            RemainderInputCommand = new Command<string>(ShowRemainderOnDisplay);
+            PercentInputCommand = new Command<string>(ShowPercentOnDisplay);
             DecimalInputCommand = new Command<string>(ShowDecimalOnDisplay);
             EqualsInputCommand = new Command(Equals);
         }
@@ -121,9 +121,9 @@ namespace calculatorUICOOP.ViewModels
 
         }
 
-        public void ShowRemainderOnDisplay(string remainder)
+        public void ShowPercentOnDisplay(string percent)
         {
-            AssignOperator(remainder);
+            AssignOperator(percent);
         }
 
         public void ShowDecimalOnDisplay(string decimalDot)
