@@ -13,8 +13,6 @@ The goal is to help beginner C# developers get familiar with a few technologies 
 
 # How do I contribute?
 
-- Pull Requests via Forking will be closed. You must PR via a branch within this repo.
-
 1. Pull `master` branch
 2. Create a local branch based off of `master`
 3. Assign an Issue to yourself
@@ -22,3 +20,8 @@ The goal is to help beginner C# developers get familiar with a few technologies 
 5. Commit to your local branch
 6. Push your branch to the GitHub project
 7. Create a Pull Request to merge your branch with `master`!
+
+# Issues and Pull Request organizational rules
+
+- Pull Requests via Forking will be closed. You must PR via a branch within this repo.
+- Issues may have labeles. PRs generally will not have labels.
