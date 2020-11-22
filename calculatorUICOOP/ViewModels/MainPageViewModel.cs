@@ -61,7 +61,7 @@ namespace calculatorUICOOP.ViewModels
             MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
             PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
             MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
-            PercentInputCommand = new Command<string>(ShowPercentOnDisplay);
+            PercentInputCommand = new Command<string>(Percentage);
             DecimalInputCommand = new Command<string>(ShowDecimalOnDisplay);
             EqualsInputCommand = new Command(Equals);
         }
@@ -121,9 +121,9 @@ namespace calculatorUICOOP.ViewModels
 
         }
 
-        public void ShowPercentOnDisplay(string percent)
+        public void Percentage(string percent)
         {
-            AssignOperator(percent);
+            DisplayContent = MathLogic.ConvertToPercent(double.Parse(DisplayContent)).ToString();
         }
 
         public void ShowDecimalOnDisplay(string decimalDot)
@@ -154,9 +154,6 @@ namespace calculatorUICOOP.ViewModels
                         DisplayContent = MathLogic.Divide(_number1, _number2).ToString();
                     else
                         DisplayContent = "Can't Divide by 0";
-                    break;
-                case "%":
-                    DisplayContent = MathLogic.ConvertToPercent(_number1).ToString();
                     break;
             }
         }
