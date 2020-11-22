@@ -123,7 +123,7 @@ namespace calculatorUICOOP.ViewModels
 
         public void Percentage(string percent)
         {
-            DisplayContent = MathLogic.ConvertToPercent(double.Parse(DisplayContent)).ToString();
+            AssignOperator(percent);
         }
 
         public void ShowDecimalOnDisplay(string decimalDot)
@@ -154,6 +154,10 @@ namespace calculatorUICOOP.ViewModels
                         DisplayContent = MathLogic.Divide(_number1, _number2).ToString();
                     else
                         DisplayContent = "Can't Divide by 0";
+                    break;
+                case "%":
+                    var tmp = MathLogic.Multiply(_number1, _number2 > 0 ? _number2 : 1);
+                    DisplayContent = MathLogic.ConvertToPercent(tmp).ToString();
                     break;
             }
         }
