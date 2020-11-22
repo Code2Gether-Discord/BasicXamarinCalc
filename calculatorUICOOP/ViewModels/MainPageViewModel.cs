@@ -38,7 +38,7 @@ namespace calculatorUICOOP.ViewModels
         public ICommand MinusInputCommand { get; set; }
         public ICommand RemainderInputCommand { get; set; }
         public ICommand DecimalInputCommand { get; set; }
-        public ICommand EqualsInputCommands { get; set; }
+        public ICommand EqualsInputCommand { get; set; }
 
         #endregion
 
@@ -59,7 +59,7 @@ namespace calculatorUICOOP.ViewModels
             MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
             RemainderInputCommand = new Command<string>(ShowRemainderOnDisplay);
             DecimalInputCommand = new Command<string>(ShowDecimalOnDisplay);
-            EqualsInputCommands = new Command(Equals);
+            EqualsInputCommand = new Command(Equals);
         }
         #endregion
 
