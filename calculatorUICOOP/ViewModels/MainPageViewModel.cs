@@ -72,8 +72,8 @@ namespace calculatorUICOOP.ViewModels
         public void ShowNumberOnDisplay(string textToDisplay)
         {
             DisplayContent += textToDisplay;
-            var removedLeadingZeros = DisplayContent.TrimStart('0');
-            DisplayContent = removedLeadingZeros.ToString();
+            if (decimal.TryParse(DisplayContent, out decimal removedLeadingZeros))
+                DisplayContent = removedLeadingZeros.ToString();
         }
 
         public void ClearScreen()
