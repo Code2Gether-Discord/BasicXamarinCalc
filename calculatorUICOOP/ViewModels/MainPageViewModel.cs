@@ -1,7 +1,9 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
+using calculatorUICOOP.Models;
 
 namespace calculatorUICOOP.ViewModels
 {
@@ -9,6 +11,9 @@ namespace calculatorUICOOP.ViewModels
     {
         #region Fields 
         private string _displayContent;
+        private double _number1;
+        private string _operator;
+        private bool _hasDecimal = false;
         #endregion
 
         #region Properties
@@ -36,10 +41,9 @@ namespace calculatorUICOOP.ViewModels
         public ICommand MultiplyInputCommand { get; set; }
         public ICommand PlusInputCommand { get; set; }
         public ICommand MinusInputCommand { get; set; }
-        public ICommand RemainderInputCommand { get; set; }
+        public ICommand PercentInputCommand { get; set; }
         public ICommand DecimalInputCommand { get; set; }
         public ICommand EqualsInputCommand { get; set; }
-
         #endregion
 
         #region Delegates
@@ -57,7 +61,7 @@ namespace calculatorUICOOP.ViewModels
             MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
             PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
             MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
-            RemainderInputCommand = new Command<string>(ShowRemainderOnDisplay);
+            PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
             DecimalInputCommand = new Command<string>(ShowDecimalOnDisplay);
             EqualsInputCommand = new Command(Equals);
         }
@@ -79,21 +83,29 @@ namespace calculatorUICOOP.ViewModels
         public void ClearScreen()
         {
             DisplayContent = "0";
+            _hasDecimal = false;
+        }
+
+        private void AssignOperator(string newOperator)
+        {
+            _number1 = Convert.ToDouble(DisplayContent);
+            this._operator = newOperator;
+            ClearScreen();
         }
 
         public void ShowPlusOnDisplay(string plus)
         {
-
+            AssignOperator(plus);
         }
 
         public void ShowMultiplyOnDisplay(string multiply)
         {
-
+            AssignOperator(multiply);
         }
 
         public void ShowMinusOnDisplay(string minus)
         {
-
+            AssignOperator(minus);
         }
 
         public void DeleteLastInput()
@@ -106,27 +118,49 @@ namespace calculatorUICOOP.ViewModels
             {
                 ClearScreen();
             }
-           
+
         }
 
-        public void ShowRemainderOnDisplay(string remainder)
+        public void ShowPercentageOnDisplay(string percent)
         {
-
+            throw new NotImplementedException();
         }
 
         public void ShowDecimalOnDisplay(string decimalDot)
         {
-
+            if (!_hasDecimal)
+            {
+                DisplayContent += decimalDot;
+                _hasDecimal = true;
+            }
         }
 
         public void Equals()
         {
-
+            double _number2 = Convert.ToDouble(DisplayContent);
+            switch (_operator)
+            {
+                case "+":
+                    DisplayContent = MathLogic.Add(_number1, _number2).ToString();
+                    break;
+                case "-":
+                    DisplayContent = MathLogic.Subtract(_number1, _number2).ToString();
+                    break;
+                case "*":
+                    DisplayContent = MathLogic.Multiply(_number1, _number2).ToString();
+                    break;
+                case "/":
+                    if (DisplayContent != "0")
+                        DisplayContent = MathLogic.Divide(_number1, _number2).ToString();
+                    else
+                        DisplayContent = "Can't Divide by 0";
+                    break;
+            }
         }
 
         public void ShowDivideOnDisplay(string divide)
         {
-
+            AssignOperator(divide);
         }
         #endregion 
     }
