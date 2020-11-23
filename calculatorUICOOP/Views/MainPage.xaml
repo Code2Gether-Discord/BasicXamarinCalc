@@ -62,7 +62,7 @@
             <Button Command="{Binding MultiplyInputCommand}" CommandParameter="*" Style="{StaticResource opButton}" Text="x"></Button>
             <Button Command="{Binding PlusInputCommand}" CommandParameter="+" Style="{StaticResource opButton}" Text="+"></Button>
             <Button Command="{Binding MinusInputCommand}" CommandParameter="-" Style="{StaticResource opButton}" Text="-"></Button>
-            <Button Command="{Binding RemainderInputCommand}" CommandParameter="%" Style="{StaticResource opButton}" Text="%"></Button>
+            <Button Command="{Binding PercentInputCommand}" CommandParameter="%" Style="{StaticResource opButton}" Text="%"></Button>
             <Button Command="{Binding ClearInputCommand}" Style="{StaticResource opButton}" Text="CE"></Button>
         </StackLayout>
     </Grid>
