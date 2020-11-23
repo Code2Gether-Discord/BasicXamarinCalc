@@ -61,7 +61,7 @@ namespace calculatorUICOOP.ViewModels
             MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
             PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
             MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
-            PercentInputCommand = new Command<string>(Percentage);
+            PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
             DecimalInputCommand = new Command<string>(ShowDecimalOnDisplay);
             EqualsInputCommand = new Command(Equals);
         }
@@ -121,9 +121,9 @@ namespace calculatorUICOOP.ViewModels
 
         }
 
-        public void Percentage(string percent)
+        public void ShowPercentageOnDisplay(string percent)
         {
-            DisplayContent = MathLogic.ConvertToPercent(double.Parse(DisplayContent)).ToString();
+            throw new NotImplementedException();
         }
 
         public void ShowDecimalOnDisplay(string decimalDot)
