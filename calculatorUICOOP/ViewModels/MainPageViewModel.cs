@@ -83,6 +83,8 @@ namespace calculatorUICOOP.ViewModels
         public void ClearScreen()
         {
             DisplayContent = "0";
+            _number1 = 0.0;
+            _operator = null;
             _hasDecimal = false;
         }
 
@@ -90,7 +92,7 @@ namespace calculatorUICOOP.ViewModels
         {
             _number1 = Convert.ToDouble(DisplayContent);
             this._operator = newOperator;
-            ClearScreen();
+            DisplayContent = "0";
         }
 
         public void ShowPlusOnDisplay(string plus)
@@ -116,7 +118,7 @@ namespace calculatorUICOOP.ViewModels
             }
             else
             {
-                ClearScreen();
+                DisplayContent = "0";
             }
 
         }
