@@ -93,6 +93,7 @@ namespace calculatorUICOOP.ViewModels
             _number1 = Convert.ToDouble(DisplayContent);
             this._operator = newOperator;
             DisplayContent = "0";
+            _hasDecimal = false;
         }
 
         public void ShowPlusOnDisplay(string plus)
