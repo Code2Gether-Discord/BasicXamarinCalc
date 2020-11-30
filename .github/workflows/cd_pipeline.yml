@@ -1,0 +1,28 @@
+name: Continuous Delivery
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  Android:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+      
+    - name: Set up MSBuild
+      uses: microsoft/setup-msbuild@v1
+      
+    - name: Generate Android Release
+      run: |
+        nuget restore
+        cd calculatorUICOOP.Android
+        MSBuild.exe calculatorUICOOP.Android.csproj /verbosity:normal /p:AndroidBuildApplicationPackage=true /p:Configuration=Release
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: release
+        path: .\calculatorUICOOP.Android\bin\Release\com.companyname.calculatoruicoop-Signed.apk
+        retention-days: 5
