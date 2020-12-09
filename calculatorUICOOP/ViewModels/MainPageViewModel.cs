@@ -150,7 +150,7 @@ namespace calculatorUICOOP.ViewModels
                     DisplayContent = MathLogic.Multiply(_number1, _number2).ToString();
                     break;
                 case "/":
-                    if (DisplayContent != "0")
+                    if (decimal.Parse(DisplayContent) != 0.0m)
                         DisplayContent = MathLogic.Divide(_number1, _number2).ToString();
                     else
                         DisplayContent = "Can't Divide by 0";
