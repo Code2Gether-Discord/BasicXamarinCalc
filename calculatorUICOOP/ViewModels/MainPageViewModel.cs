@@ -1,19 +1,19 @@
-﻿using System;
+﻿using calculatorUICOOP.Models;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
-using calculatorUICOOP.Models;
 
 namespace calculatorUICOOP.ViewModels
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
-        #region Fields 
+        #region Fields
         private string _displayContent;
+        private string _input;
         private double _number1;
         private string _operator;
-        private bool _hasDecimal = false;
         #endregion
 
         #region Properties
@@ -22,15 +22,27 @@ namespace calculatorUICOOP.ViewModels
             get => _displayContent;
             set
             {
-                if (_displayContent == value)
+                if (_displayContent != value)
                 {
-                    return;
+                    _displayContent = value;
+                    // Send a "push" notification to the UI letting it know the DisplayContent has changed.
+                    OnPropertyChanged();
                 }
-                _displayContent = value;
-                // Send a "push" notification to the UI letting it know the DisplayContent has changed.
-                OnPropertyChanged();
             }
         }
+
+        public string Input
+        {
+            get => _input;
+            set
+            {
+                _input = value;
+                DisplayContent = _input;
+            }
+        }
+
+        public bool InputHasDecimal =>
+            Input.Contains(".");
         #endregion
 
         #region Commands
@@ -54,116 +66,135 @@ namespace calculatorUICOOP.ViewModels
         public MainPageViewModel()
         {
             DisplayContent = "0";
-            NumberInputCommand = new Command<string>(ShowNumberOnDisplay);
-            ClearInputCommand = new Command(ClearScreen);
-            DeleteInputCommand = new Command(DeleteLastInput);
-            DivideInputCommand = new Command<string>(ShowDivideOnDisplay);
-            MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
+            Input = "0";
+            NumberInputCommand = new Command<string>(AppendDigit);
+            DecimalInputCommand = new Command<string>(AppendDecimal);
             PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
             MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
+            MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
+            DivideInputCommand = new Command<string>(ShowDivideOnDisplay);
             PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
-            DecimalInputCommand = new Command<string>(ShowDecimalOnDisplay);
             EqualsInputCommand = new Command(Equals);
+            ClearInputCommand = new Command(ClearScreen);
+            DeleteInputCommand = new Command(DeleteLastInput);
         }
         #endregion
 
         #region Methods
-        private void OnPropertyChanged([CallerMemberName] string text = null)
+        public void AppendDigit(string number)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
+            var appendedNumber = Input + number;
+            if (decimal.TryParse(appendedNumber, out decimal removedLeadingZeros))
+                Input = removedLeadingZeros.ToString();
         }
 
-        public void ShowNumberOnDisplay(string textToDisplay)
+        public void AppendDecimal(string decimalDot)
         {
-            DisplayContent += textToDisplay;
-            if (decimal.TryParse(DisplayContent, out decimal removedLeadingZeros))
-                DisplayContent = removedLeadingZeros.ToString();
+            if (!InputHasDecimal)
+                Input += decimalDot;
         }
 
-        public void ClearScreen()
-        {
-            DisplayContent = "0";
-            _number1 = 0.0;
-            _operator = null;
-            _hasDecimal = false;
-        }
-
-        private void AssignOperator(string newOperator)
-        {
-            _number1 = Convert.ToDouble(DisplayContent);
-            this._operator = newOperator;
-            DisplayContent = "0";
-            _hasDecimal = false;
-        }
-
-        public void ShowPlusOnDisplay(string plus)
-        {
+        public void ShowPlusOnDisplay(string plus) =>
             AssignOperator(plus);
-        }
 
-        public void ShowMultiplyOnDisplay(string multiply)
-        {
-            AssignOperator(multiply);
-        }
-
-        public void ShowMinusOnDisplay(string minus)
-        {
+        public void ShowMinusOnDisplay(string minus) =>
             AssignOperator(minus);
-        }
 
-        public void DeleteLastInput()
-        {
-            if (DisplayContent.Length > 1)
-            {
-                DisplayContent = DisplayContent.Remove(DisplayContent.Length - 1);
-            }
-            else
-            {
-                DisplayContent = "0";
-            }
+        public void ShowMultiplyOnDisplay(string multiply) =>
+            AssignOperator(multiply);
 
-        }
+        public void ShowDivideOnDisplay(string divide) =>
+            AssignOperator(divide);
 
         public void ShowPercentageOnDisplay(string percent)
         {
             throw new NotImplementedException();
         }
 
-        public void ShowDecimalOnDisplay(string decimalDot)
-        {
-            if (!_hasDecimal)
-            {
-                DisplayContent += decimalDot;
-                _hasDecimal = true;
-            }
-        }
-
         public void Equals()
         {
-            double _number2 = Convert.ToDouble(DisplayContent);
-            switch (_operator)
+            var number2 = Convert.ToDouble(Input);
+
+            Input = "0";
+
+            double result = 0.0;
+            try
             {
-                case "+":
-                    DisplayContent = MathLogic.Add(_number1, _number2).ToString();
-                    break;
-                case "-":
-                    DisplayContent = MathLogic.Subtract(_number1, _number2).ToString();
-                    break;
-                case "*":
-                    DisplayContent = MathLogic.Multiply(_number1, _number2).ToString();
-                    break;
-                case "/":
-                    if (DisplayContent != "0")
-                        DisplayContent = MathLogic.Divide(_number1, _number2).ToString();
-                    else
-                        DisplayContent = "Can't Divide by 0";
-                    break;
+                switch (_operator)
+                {
+                    case "+":
+                        result = MathLogic.Add(_number1, number2);
+                        break;
+                    case "-":
+                        result = MathLogic.Subtract(_number1, number2);
+                        break;
+                    case "*":
+                        result = MathLogic.Multiply(_number1, number2);
+                        break;
+                    case "/":
+                        if (number2 == 0.0)
+                        {
+                            throw new DivideByZeroException();
+                        }
+
+                        result = MathLogic.Divide(_number1, number2);
+                        break;
+                    case null:
+                        Input = number2.ToString();
+                        return;
+                }
             }
+            catch (DivideByZeroException)
+            {
+                _number1 = 0.0;
+
+                DisplayContent = "Can't Divide by 0";
+                return;
+            }
+            finally
+            {
+                _operator = null;
+            }
+
+            _number1 = result;
+            DisplayContent = result.ToString();
         }
 
-        public void ShowDivideOnDisplay(string divide)
+        public void ClearScreen()
         {
-            AssignOperator(divide);
+            _number1 = 0.0;
+            _operator = null;
+            Input = "0";
+        }
+
+        public void DeleteLastInput()
+        {
+            if (Input.Length > 1)
+            {
+                Input = Input.Remove(Input.Length - 1);
+            }
+            else
+            {
+                Input = "0";
+            }
+
+        }
+
+        private void AssignOperator(string newOperator)
+        {
+            if (Input != "0")
+                _number1 = Convert.ToDouble(Input);
+
+            // Even if it has this value, this line is necessary to ensure
+            // that DisplayContent is showing the Input and not other thing.
+            Input = "0";
+
+            _operator = newOperator;
+        }
+
+        private void OnPropertyChanged([CallerMemberName] string text = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
         }
         #endregion 
     }
