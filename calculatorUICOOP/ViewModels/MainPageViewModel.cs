@@ -113,15 +113,10 @@ namespace calculatorUICOOP.ViewModels
 
         public void DeleteLastInput()
         {
-            if (DisplayContent.Length > 1)
-            {
-                DisplayContent = DisplayContent.Remove(DisplayContent.Length - 1);
-            }
-            else
-            {
-                DisplayContent = "0";
-            }
-
+            DisplayContent = "0";
+            _number1 = 0.0;
+            _operator = null;
+            _hasDecimal = false;
         }
 
         public void ShowPercentageOnDisplay(string percent)
