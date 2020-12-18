@@ -47,15 +47,15 @@ namespace calculatorUICOOP.ViewModels
 
         #region Commands
         public ICommand NumberInputCommand { get; set; }
-        public ICommand ClearInputCommand { get; set; }
-        public ICommand DeleteInputCommand { get; set; }
+        public ICommand DecimalInputCommand { get; set; }
         public ICommand DivideInputCommand { get; set; }
         public ICommand MultiplyInputCommand { get; set; }
         public ICommand PlusInputCommand { get; set; }
         public ICommand MinusInputCommand { get; set; }
         public ICommand PercentInputCommand { get; set; }
-        public ICommand DecimalInputCommand { get; set; }
         public ICommand EqualsInputCommand { get; set; }
+        public ICommand ClearEntryInputCommand { get; set; }
+        public ICommand ClearInputCommand { get; set; }
         #endregion
 
         #region Delegates
@@ -75,8 +75,8 @@ namespace calculatorUICOOP.ViewModels
             DivideInputCommand = new Command<string>(ShowDivideOnDisplay);
             PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
             EqualsInputCommand = new Command(Equals);
-            ClearInputCommand = new Command(ClearScreen);
-            DeleteInputCommand = new Command(DeleteLastAppend);
+            ClearEntryInputCommand = new Command(ClearEntry);
+            ClearInputCommand = new Command(Clear);
         }
         #endregion
 
@@ -160,24 +160,16 @@ namespace calculatorUICOOP.ViewModels
             DisplayContent = result.ToString();
         }
 
-        public void ClearScreen()
+        public void ClearEntry()
         {
-            _number1 = 0.0;
-            _operator = null;
             Input = "0";
         }
 
-        public void DeleteLastAppend()
+        public void Clear()
         {
-            if (Input.Length > 1)
-            {
-                Input = Input.Remove(Input.Length - 1);
-            }
-            else
-            {
-                Input = "0";
-            }
-
+            Input = "0";
+            _number1 = 0.0;
+            _operator = null;
         }
 
         private void AssignOperator(string newOperator)
