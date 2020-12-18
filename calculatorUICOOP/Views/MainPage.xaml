@@ -57,13 +57,13 @@
 
       
         <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
-            <Button Command="{Binding DeleteInputCommand}" FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
+            <Button Command="{Binding ClearInputCommand}" FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
             <Button Command="{Binding DivideInputCommand}" CommandParameter="/" Style="{StaticResource opButton}" Text="/"></Button>
             <Button Command="{Binding MultiplyInputCommand}" CommandParameter="*" Style="{StaticResource opButton}" Text="x"></Button>
             <Button Command="{Binding PlusInputCommand}" CommandParameter="+" Style="{StaticResource opButton}" Text="+"></Button>
             <Button Command="{Binding MinusInputCommand}" CommandParameter="-" Style="{StaticResource opButton}" Text="-"></Button>
             <Button Command="{Binding PercentInputCommand}" CommandParameter="%" Style="{StaticResource opButton}" Text="%"></Button>
-            <Button Command="{Binding ClearInputCommand}" Style="{StaticResource opButton}" Text="CE"></Button>
+            <Button Command="{Binding ClearEntryInputCommand}" Style="{StaticResource opButton}" Text="CE"></Button>
         </StackLayout>
     </Grid>
 </ContentPage>

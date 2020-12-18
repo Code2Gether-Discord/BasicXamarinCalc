@@ -35,8 +35,8 @@ namespace calculatorUICOOP.ViewModels
 
         #region Commands
         public ICommand NumberInputCommand { get; set; }
+        public ICommand ClearEntryInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
-        public ICommand DeleteInputCommand { get; set; }
         public ICommand DivideInputCommand { get; set; }
         public ICommand MultiplyInputCommand { get; set; }
         public ICommand PlusInputCommand { get; set; }
@@ -55,8 +55,8 @@ namespace calculatorUICOOP.ViewModels
         {
             DisplayContent = "0";
             NumberInputCommand = new Command<string>(ShowNumberOnDisplay);
-            ClearInputCommand = new Command(ClearScreen);
-            DeleteInputCommand = new Command(DeleteLastInput);
+            ClearEntryInputCommand = new Command(ClearEntry);
+            ClearInputCommand = new Command(Clear);
             DivideInputCommand = new Command<string>(ShowDivideOnDisplay);
             MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
             PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
@@ -80,12 +80,16 @@ namespace calculatorUICOOP.ViewModels
                 DisplayContent = removedLeadingZeros.ToString();
         }
 
-        public void ClearScreen()
+        public void ClearEntry()
         {
-            DisplayContent = "0";
-            _number1 = 0.0;
-            _operator = null;
-            _hasDecimal = false;
+            if (DisplayContent.Length > 1)
+            {
+                DisplayContent = DisplayContent.Remove(DisplayContent.Length - 1);
+            }
+            else
+            {
+                DisplayContent = "0";
+            }
         }
 
         private void AssignOperator(string newOperator)
@@ -111,17 +115,12 @@ namespace calculatorUICOOP.ViewModels
             AssignOperator(minus);
         }
 
-        public void DeleteLastInput()
+        public void Clear()
         {
-            if (DisplayContent.Length > 1)
-            {
-                DisplayContent = DisplayContent.Remove(DisplayContent.Length - 1);
-            }
-            else
-            {
-                DisplayContent = "0";
-            }
-
+            DisplayContent = "0";
+            _number1 = 0.0;
+            _operator = null;
+            _hasDecimal = false;
         }
 
         public void ShowPercentageOnDisplay(string percent)
