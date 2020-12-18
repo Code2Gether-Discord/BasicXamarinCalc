@@ -76,7 +76,7 @@ namespace calculatorUICOOP.ViewModels
             PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
             EqualsInputCommand = new Command(Equals);
             ClearInputCommand = new Command(ClearScreen);
-            DeleteInputCommand = new Command(DeleteLastInput);
+            DeleteInputCommand = new Command(DeleteLastAppend);
         }
         #endregion
 
@@ -167,7 +167,7 @@ namespace calculatorUICOOP.ViewModels
             Input = "0";
         }
 
-        public void DeleteLastInput()
+        public void DeleteLastAppend()
         {
             if (Input.Length > 1)
             {
