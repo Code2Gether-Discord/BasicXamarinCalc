@@ -22,17 +22,17 @@ namespace calculatorUICOOP.Droid.Helpers
             if (!logDir.Exists)
                 logDir.Create();
 
-            // Generate Log File
+            // Set Log File
             string logFileName = $"{DateTime.UtcNow:s}.log";
             var logFile = new FileInfo(Path.Combine(logDir.FullName, logFileName));
 
-            using var _ = logFile.Create();
             _logFile = logFile;
         }
 
         public void Log(LogLevel level, string message)
         {
-            using var log = _logFile.AppendText();
+            using var log = _logFile.Exists ? _logFile.AppendText() : _logFile.CreateText();
+
             log.WriteLine($"[{DateTime.UtcNow:s}] ({level}) - {message}");   // [2020-12-24T21:30:00] (INFO) - Ho Ho Ho! Merry Log Message
         }
 
