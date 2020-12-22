@@ -13,7 +13,7 @@ namespace calculatorUICOOP.ViewModels
         private string _displayContent;
         private string _input;
         private double _number1;
-        private string _operator;
+        private MathOperation? _operator;
         #endregion
 
         #region Properties
@@ -48,14 +48,11 @@ namespace calculatorUICOOP.ViewModels
         #region Commands
         public ICommand NumberInputCommand { get; set; }
         public ICommand DecimalInputCommand { get; set; }
-        public ICommand DivideInputCommand { get; set; }
-        public ICommand MultiplyInputCommand { get; set; }
-        public ICommand PlusInputCommand { get; set; }
-        public ICommand MinusInputCommand { get; set; }
         public ICommand PercentInputCommand { get; set; }
         public ICommand EqualsInputCommand { get; set; }
         public ICommand ClearEntryInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
+        public ICommand OperatorInputCommand { get; set; }
         #endregion
 
         #region Delegates
@@ -69,14 +66,11 @@ namespace calculatorUICOOP.ViewModels
             Input = "0";
             NumberInputCommand = new Command<string>(AppendDigit);
             DecimalInputCommand = new Command<string>(AppendDecimal);
-            PlusInputCommand = new Command<string>(ShowPlusOnDisplay);
-            MinusInputCommand = new Command<string>(ShowMinusOnDisplay);
-            MultiplyInputCommand = new Command<string>(ShowMultiplyOnDisplay);
-            DivideInputCommand = new Command<string>(ShowDivideOnDisplay);
             PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
             EqualsInputCommand = new Command(Equals);
             ClearEntryInputCommand = new Command(ClearEntry);
             ClearInputCommand = new Command(Clear);
+            OperatorInputCommand = new Command(obj => AssignOperator((MathOperation)obj));
         }
         #endregion
 
@@ -93,19 +87,7 @@ namespace calculatorUICOOP.ViewModels
             if (!InputHasDecimal)
                 Input += decimalDot;
         }
-
-        public void ShowPlusOnDisplay(string plus) =>
-            AssignOperator(plus);
-
-        public void ShowMinusOnDisplay(string minus) =>
-            AssignOperator(minus);
-
-        public void ShowMultiplyOnDisplay(string multiply) =>
-            AssignOperator(multiply);
-
-        public void ShowDivideOnDisplay(string divide) =>
-            AssignOperator(divide);
-
+        
         public void ShowPercentageOnDisplay(string percent)
         {
             throw new NotImplementedException();
@@ -122,16 +104,16 @@ namespace calculatorUICOOP.ViewModels
             {
                 switch (_operator)
                 {
-                    case "+":
+                    case MathOperation.Addition:
                         result = MathLogic.Add(_number1, number2);
                         break;
-                    case "-":
+                    case MathOperation.Subtraction:
                         result = MathLogic.Subtract(_number1, number2);
                         break;
-                    case "*":
+                    case MathOperation.Multiplication:
                         result = MathLogic.Multiply(_number1, number2);
                         break;
-                    case "/":
+                    case MathOperation.Division:
                         if (number2 == 0.0)
                         {
                             throw new DivideByZeroException();
@@ -172,7 +154,7 @@ namespace calculatorUICOOP.ViewModels
             _operator = null;
         }
 
-        private void AssignOperator(string newOperator)
+        private void AssignOperator(MathOperation? newOperator)
         {
             if (Input != "0")
                 _number1 = Convert.ToDouble(Input);
