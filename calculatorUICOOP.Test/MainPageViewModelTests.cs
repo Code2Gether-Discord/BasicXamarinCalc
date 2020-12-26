@@ -6,11 +6,6 @@ namespace calculatorUICOOP.Test
 {
     public class MainPageViewModelTests
     {
-        public MainPageViewModelTests()
-        {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-        }
-
         [TestCase("5", "0005")]
         [TestCase("5", "05")]
         [TestCase("0.005", "0.005")]
