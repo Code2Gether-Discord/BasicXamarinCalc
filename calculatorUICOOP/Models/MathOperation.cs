@@ -1,6 +1,6 @@
 ﻿namespace calculatorUICOOP.Models
 {
-    enum MathOperation
+    public enum MathOperation
     {
         Addition,
         Subtraction,
