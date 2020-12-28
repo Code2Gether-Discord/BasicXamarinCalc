@@ -43,6 +43,7 @@
 
         <Frame CornerRadius="10" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="LightGray" Padding="10" Margin="5">
             <StackLayout Orientation="Horizontal">
+                <Button Command="{Binding SwitchSignInputCommand}" Style="{StaticResource opButton}" Text="+ / --"></Button>
                 <Button Command="{Binding ClearInputCommand}" Style="{StaticResource opButton}" Text="C"></Button>
                 <Button Command="{Binding ClearEntryInputCommand}" Style="{StaticResource opButton}" Text="CE"></Button>
                 <Button Command="{Binding DeleteInputCommand}" Style="{StaticResource opButton}" Text="DEL"></Button>

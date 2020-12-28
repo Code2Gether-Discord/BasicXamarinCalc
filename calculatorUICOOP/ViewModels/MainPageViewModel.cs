@@ -53,6 +53,7 @@ namespace calculatorUICOOP.ViewModels
         public ICommand DeleteInputCommand { get; set; }
         public ICommand ClearEntryInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
+        public ICommand SwitchSignInputCommand { get; set; }
         public ICommand OperatorInputCommand { get; set; }
         #endregion
 
@@ -72,6 +73,7 @@ namespace calculatorUICOOP.ViewModels
             DeleteInputCommand = new Command(DeleteLastAppend);
             ClearEntryInputCommand = new Command(ClearEntry);
             ClearInputCommand = new Command(Clear);
+            SwitchSignInputCommand = new Command(SwitchInputSign);
             OperatorInputCommand = new Command(obj => AssignOperator((MathOperation)obj));
         }
         #endregion
@@ -162,6 +164,18 @@ namespace calculatorUICOOP.ViewModels
             Input = "0";
             _number1 = 0.0;
             _operator = null;
+        }
+
+        public void SwitchInputSign()
+        {
+            decimal.TryParse(Input, out var input);
+
+            if (input != 0m)
+            {
+                var switchedSign = input * -1;
+
+                Input = switchedSign.ToString();
+            }
         }
 
         private void AssignOperator(MathOperation? newOperator)
