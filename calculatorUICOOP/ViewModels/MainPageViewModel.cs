@@ -50,6 +50,7 @@ namespace calculatorUICOOP.ViewModels
         public ICommand DecimalInputCommand { get; set; }
         public ICommand PercentInputCommand { get; set; }
         public ICommand EqualsInputCommand { get; set; }
+        public ICommand DeleteInputCommand { get; set; }
         public ICommand ClearEntryInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
         public ICommand OperatorInputCommand { get; set; }
@@ -68,6 +69,7 @@ namespace calculatorUICOOP.ViewModels
             DecimalInputCommand = new Command<string>(AppendDecimal);
             PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
             EqualsInputCommand = new Command(Equals);
+            DeleteInputCommand = new Command(DeleteLastAppend);
             ClearEntryInputCommand = new Command(ClearEntry);
             ClearInputCommand = new Command(Clear);
             OperatorInputCommand = new Command(obj => AssignOperator((MathOperation)obj));
@@ -140,6 +142,14 @@ namespace calculatorUICOOP.ViewModels
 
             _number1 = result;
             DisplayContent = result.ToString();
+        }
+
+        public void DeleteLastAppend()
+        {
+            if (Input.Length > 1)
+                Input = Input.Remove(Input.Length - 1);
+            else
+                Input = "0";
         }
 
         public void ClearEntry()
