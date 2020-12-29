@@ -91,7 +91,7 @@ namespace calculatorUICOOP.ViewModels
             if (!InputHasDecimal)
                 Input += decimalDot;
         }
-        
+
         public void ShowPercentageOnDisplay(string percent)
         {
             throw new NotImplementedException();
@@ -149,9 +149,15 @@ namespace calculatorUICOOP.ViewModels
         public void DeleteLastAppend()
         {
             if (Input.Length > 1)
+            {
                 Input = Input.Remove(Input.Length - 1);
+            }
             else
-                Input = "0";
+            {
+                _operator = null;
+                Input = _number1.ToString();
+                _number1 = 0.0;
+            }
         }
 
         public void ClearEntry()
@@ -170,12 +176,9 @@ namespace calculatorUICOOP.ViewModels
         {
             decimal.TryParse(Input, out var input);
 
-            if (input != 0m)
-            {
-                var switchedSign = input * -1;
+            var switchedSign = input * -1;
 
-                Input = switchedSign.ToString();
-            }
+            Input = switchedSign.ToString();
         }
 
         private void AssignOperator(MathOperation? newOperator)
