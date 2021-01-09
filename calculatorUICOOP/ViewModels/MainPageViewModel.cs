@@ -1,4 +1,5 @@
 ﻿using calculatorUICOOP.Models;
+using Prism.Mvvm;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -7,7 +8,7 @@ using Xamarin.Forms;
 
 namespace calculatorUICOOP.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : BindableBase
     {
         #region Fields
         private string _displayContent;
@@ -26,7 +27,7 @@ namespace calculatorUICOOP.ViewModels
                 {
                     _displayContent = value;
                     // Send a "push" notification to the UI letting it know the DisplayContent has changed.
-                    OnPropertyChanged();
+                    RaisePropertyChanged();
                 }
             }
         }
@@ -53,10 +54,6 @@ namespace calculatorUICOOP.ViewModels
         public ICommand ClearEntryInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
         public ICommand OperatorInputCommand { get; set; }
-        #endregion
-
-        #region Delegates
-        public event PropertyChangedEventHandler PropertyChanged;
         #endregion
 
         #region Constructor
@@ -171,11 +168,6 @@ namespace calculatorUICOOP.ViewModels
             Input = "0";
 
             _operator = newOperator;
-        }
-
-        private void OnPropertyChanged([CallerMemberName] string text = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(text));
         }
         #endregion 
     }
