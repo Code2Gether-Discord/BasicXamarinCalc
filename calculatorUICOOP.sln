@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{943008BC-1
 		docs\project-requirements.md = docs\project-requirements.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calculatorUICOOP.Test", "calculatorUICOOP.Test\calculatorUICOOP.Test.csproj", "{94A4B35B-00BA-43AB-A853-D1350BB7E8B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{7FB3E8E8-1205-469B-95A0-B293A6616126}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7FB3E8E8-1205-469B-95A0-B293A6616126}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7FB3E8E8-1205-469B-95A0-B293A6616126}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{94A4B35B-00BA-43AB-A853-D1350BB7E8B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94A4B35B-00BA-43AB-A853-D1350BB7E8B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94A4B35B-00BA-43AB-A853-D1350BB7E8B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94A4B35B-00BA-43AB-A853-D1350BB7E8B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
