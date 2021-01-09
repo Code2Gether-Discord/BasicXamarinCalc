@@ -1,8 +1,6 @@
 ﻿using calculatorUICOOP.Models;
 using Prism.Mvvm;
 using System;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -76,7 +74,9 @@ namespace calculatorUICOOP.ViewModels
         {
             var appendedNumber = Input + number;
             if (decimal.TryParse(appendedNumber, out decimal removedLeadingZeros))
+            {
                 Input = removedLeadingZeros.ToString();
+            }  
         }
 
         public void AppendDecimal(string decimalDot)

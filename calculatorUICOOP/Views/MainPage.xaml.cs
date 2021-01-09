@@ -1,6 +1,7 @@
 ﻿using calculatorUICOOP.ViewModels;
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using Xamarin.Forms;
 
 namespace calculatorUICOOP
@@ -19,12 +20,14 @@ namespace calculatorUICOOP
         public MainPage()
         {
             InitializeComponent();
+            //In case someone's country uses a "," instead of period for decimals
+            CultureInfo.CurrentCulture = new CultureInfo("en-GB");
             vm = new MainPageViewModel();
             BindingContext = vm;
         }
 
         #endregion Constructor
-      
-        
+
+
     }
 }
