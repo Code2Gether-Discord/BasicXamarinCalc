@@ -87,7 +87,7 @@ namespace calculatorUICOOP.ViewModels
             if (!InputHasDecimal)
                 Input += decimalDot;
         }
-        
+
         public void ShowPercentageOnDisplay(string percent)
         {
             throw new NotImplementedException();
@@ -157,7 +157,14 @@ namespace calculatorUICOOP.ViewModels
         private void AssignOperator(MathOperation? newOperator)
         {
             if (Input != "0")
+            {
+                //If the display is following with a dot, strip it off
+                if (Input.Length > 0 && Input.EndsWith("."))
+                {
+                    Input = Input.Substring(0, Input.Length - 1);
+                }
                 _number1 = Convert.ToDouble(Input);
+            }
 
             // Even if it has this value, this line is necessary to ensure
             // that DisplayContent is showing the Input and not other thing.
