@@ -97,11 +97,9 @@ namespace calculatorUICOOP.ViewModels
         {
             var number2 = Convert.ToDouble(Input);
 
-            Input = "0";
-
-            double result = 0.0;
             try
             {
+                double result = 0.0;
                 switch (_operator)
                 {
                     case MathOperation.Addition:
@@ -122,24 +120,24 @@ namespace calculatorUICOOP.ViewModels
                         result = MathLogic.Divide(_number1, number2);
                         break;
                     case null:
-                        Input = number2.ToString();
                         return;
                 }
+
+                _input = null;
+                _number1 = result;
+                DisplayContent = result.ToString();
             }
             catch (DivideByZeroException)
             {
+                _input = null;
                 _number1 = 0.0;
 
                 DisplayContent = "Can't Divide by 0";
-                return;
             }
             finally
             {
                 _operator = null;
             }
-
-            _number1 = result;
-            DisplayContent = result.ToString();
         }
 
         public void ClearEntry()
@@ -156,11 +154,9 @@ namespace calculatorUICOOP.ViewModels
 
         private void AssignOperator(MathOperation? newOperator)
         {
-            if (Input != "0")
+            if (Input != null)
                 _number1 = Convert.ToDouble(Input);
 
-            // Even if it has this value, this line is necessary to ensure
-            // that DisplayContent is showing the Input and not other thing.
             Input = "0";
 
             _operator = newOperator;
