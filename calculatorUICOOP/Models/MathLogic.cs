@@ -33,5 +33,10 @@
         {
             return num1 / num2;
         }
+
+        public static double ConvertToPercent(double num1)
+        {
+            return num1 / 100;
+        }
     }
 }
