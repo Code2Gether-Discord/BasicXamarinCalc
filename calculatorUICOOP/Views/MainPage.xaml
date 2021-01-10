@@ -17,11 +17,12 @@
     <Grid BackgroundColor="gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="30.1" />
-            <RowDefinition Height="180" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
-            <RowDefinition Height="100" />
+            <RowDefinition Height="140" />
+            <RowDefinition Height="75" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="90" />
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -39,32 +40,43 @@
                HorizontalTextAlignment="End" VerticalTextAlignment="Start" FontSize="50">
         </Label>
 
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="9" Style="{StaticResource numButton}" Text="9" Grid.Row="2" Grid.Column="2"></Button>
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="8" Style="{StaticResource numButton}" Text="8" Grid.Row="2" Grid.Column="1"></Button>
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="7" Style="{StaticResource numButton}" Text="7" Grid.Row="2" Grid.Column="0"></Button>
 
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="4" Style="{StaticResource numButton}" Text="4" Grid.Row="3" Grid.Column="0"></Button>
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="5" Style="{StaticResource numButton}" Text="5" Grid.Row="3" Grid.Column="1"></Button>
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="6" Style="{StaticResource numButton}" Text="6" Grid.Row="3" Grid.Column="2"></Button>
+        <Frame CornerRadius="10" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" BackgroundColor="LightGray" Padding="10" Margin="5">
+            <StackLayout Orientation="Horizontal">
+                <Button Command="{Binding SwitchSignInputCommand}" Style="{StaticResource opButton}" Text="+ / --"></Button>
+                <Button Command="{Binding ClearInputCommand}" Style="{StaticResource opButton}" Text="C"></Button>
+                <Button Command="{Binding ClearEntryInputCommand}" Style="{StaticResource opButton}" Text="CE"></Button>
+                <Button Command="{Binding DeleteInputCommand}" Style="{StaticResource opButton}" Text="DEL"></Button>
+            </StackLayout>
+        </Frame>
 
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="1" Style="{StaticResource numButton}" Text="1" Grid.Row="4" Grid.Column="0"></Button>
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="2" Style="{StaticResource numButton}" Text="2" Grid.Row="4" Grid.Column="1"></Button>
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="3" Style="{StaticResource numButton}" Text="3" Grid.Row="4" Grid.Column="2"></Button>
 
-      
-        <Button Command="{Binding DecimalInputCommand}" CommandParameter="." Style="{StaticResource numButton}" Text="." Grid.Row="5" Grid.Column="0"></Button>
-        <Button Command="{Binding NumberInputCommand}" CommandParameter="0" Style="{StaticResource numButton}" Text="0" Grid.Row="5" Grid.Column="1"></Button>
-        <Button Command="{Binding EqualsInputCommand}" Style="{StaticResource numButton}" Text="=" Grid.Row="5" Grid.Column="2"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="9" Style="{StaticResource numButton}" Text="9" Grid.Row="3" Grid.Column="2"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="8" Style="{StaticResource numButton}" Text="8" Grid.Row="3" Grid.Column="1"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="7" Style="{StaticResource numButton}" Text="7" Grid.Row="3" Grid.Column="0"></Button>
 
-      
-        <StackLayout Grid.RowSpan="4" Grid.Column="3" Grid.Row="2" BackgroundColor="LightGray" Padding="10" Margin="5">
-            <Button Command="{Binding ClearInputCommand}" FontSize="20" Text="C" CornerRadius="10" BackgroundColor="DimGray" TextColor="White"></Button>
-            <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Division}" Style="{StaticResource opButton}" Text="/"></Button>
-            <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Multiplication}" Style="{StaticResource opButton}" Text="x"></Button>
-            <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Addition}" Style="{StaticResource opButton}" Text="+"></Button>
-            <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Subtraction}" Style="{StaticResource opButton}" Text="-"></Button>
-            <Button Command="{Binding PercentInputCommand}" CommandParameter="%" Style="{StaticResource opButton}" Text="%"></Button>
-            <Button Command="{Binding ClearEntryInputCommand}" Style="{StaticResource opButton}" Text="CE"></Button>
-        </StackLayout>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="4" Style="{StaticResource numButton}" Text="4" Grid.Row="4" Grid.Column="0"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="5" Style="{StaticResource numButton}" Text="5" Grid.Row="4" Grid.Column="1"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="6" Style="{StaticResource numButton}" Text="6" Grid.Row="4" Grid.Column="2"></Button>
+
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="1" Style="{StaticResource numButton}" Text="1" Grid.Row="5" Grid.Column="0"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="2" Style="{StaticResource numButton}" Text="2" Grid.Row="5" Grid.Column="1"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="3" Style="{StaticResource numButton}" Text="3" Grid.Row="5" Grid.Column="2"></Button>
+
+
+        <Button Command="{Binding DecimalInputCommand}" CommandParameter="." Style="{StaticResource numButton}" Text="." Grid.Row="6" Grid.Column="0"></Button>
+        <Button Command="{Binding NumberInputCommand}" CommandParameter="0" Style="{StaticResource numButton}" Text="0" Grid.Row="6" Grid.Column="1"></Button>
+        <Button Command="{Binding EqualsInputCommand}" Style="{StaticResource numButton}" Text="=" Grid.Row="6" Grid.Column="2"></Button>
+
+
+        <Frame CornerRadius="10" Grid.Column="3" Grid.Row="3" Grid.RowSpan="4" BackgroundColor="LightGray" Padding="10" Margin="5">
+            <StackLayout>
+                <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Division}" Style="{StaticResource opButton}" Text="/"></Button>
+                <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Multiplication}" Style="{StaticResource opButton}" Text="x"></Button>
+                <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Addition}" Style="{StaticResource opButton}" Text="+"></Button>
+                <Button Command="{Binding OperatorInputCommand}" CommandParameter="{x:Static model:MathOperation.Subtraction}" Style="{StaticResource opButton}" Text="-"></Button>
+                <Button Command="{Binding PercentInputCommand}" CommandParameter="%" Style="{StaticResource opButton}" Text="%"></Button>
+            </StackLayout>
+        </Frame>
     </Grid>
 </ContentPage>

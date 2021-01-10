@@ -50,8 +50,10 @@ namespace calculatorUICOOP.ViewModels
         public ICommand DecimalInputCommand { get; set; }
         public ICommand PercentInputCommand { get; set; }
         public ICommand EqualsInputCommand { get; set; }
+        public ICommand DeleteInputCommand { get; set; }
         public ICommand ClearEntryInputCommand { get; set; }
         public ICommand ClearInputCommand { get; set; }
+        public ICommand SwitchSignInputCommand { get; set; }
         public ICommand OperatorInputCommand { get; set; }
         #endregion
 
@@ -68,8 +70,10 @@ namespace calculatorUICOOP.ViewModels
             DecimalInputCommand = new Command<string>(AppendDecimal);
             PercentInputCommand = new Command<string>(ShowPercentageOnDisplay);
             EqualsInputCommand = new Command(Equals);
+            DeleteInputCommand = new Command(DeleteLastAppend);
             ClearEntryInputCommand = new Command(ClearEntry);
             ClearInputCommand = new Command(Clear);
+            SwitchSignInputCommand = new Command(SwitchInputSign);
             OperatorInputCommand = new Command(obj => AssignOperator((MathOperation)obj));
         }
         #endregion
@@ -87,7 +91,7 @@ namespace calculatorUICOOP.ViewModels
             if (!InputHasDecimal)
                 Input += decimalDot;
         }
-        
+
         public void ShowPercentageOnDisplay(string percent)
         {
             throw new NotImplementedException();
@@ -140,6 +144,20 @@ namespace calculatorUICOOP.ViewModels
             }
         }
 
+        public void DeleteLastAppend()
+        {
+            if (Input.Length > 1)
+            {
+                Input = Input.Remove(Input.Length - 1);
+            }
+            else
+            {
+                _operator = null;
+                Input = _number1.ToString();
+                _number1 = 0.0;
+            }
+        }
+
         public void ClearEntry()
         {
             Input = "0";
@@ -150,6 +168,15 @@ namespace calculatorUICOOP.ViewModels
             Input = "0";
             _number1 = 0.0;
             _operator = null;
+        }
+
+        public void SwitchInputSign()
+        {
+            decimal.TryParse(Input, out var input);
+
+            var switchedSign = input * -1;
+
+            Input = switchedSign.ToString();
         }
 
         private void AssignOperator(MathOperation? newOperator)
