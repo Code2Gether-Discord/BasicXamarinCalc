@@ -149,7 +149,7 @@ namespace calculatorUICOOP.ViewModels
             if (Input.Length > 1)
             {
                 if (Input.Length == 2 && Input.Contains("-"))
-                    ClearEntry();
+                    Input = "0";
                 else
                     Input = Input.Remove(Input.Length - 1);
             }
